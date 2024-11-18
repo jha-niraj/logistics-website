@@ -4,11 +4,12 @@ import { useState, useEffect, useRef } from "react"
 import { Menu } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import secondLogo from "./mainlogo.png";
 import { RainbowButton } from "./ui/rainbow-button";
 import ShimmerButton from "./ui/shimmer-button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useLocation } from "react-router-dom";
 
 const services = [
     {
@@ -56,17 +57,20 @@ const navItems = [
     { name: "About", href: "/aboutus" },
     { name: "Partners", href: "/partners" },
     { name: "Contact", href: "/contactus" },
+    { name: "Our Employees", href: "/ouremployees" }
 ]
 
 export default function Navbar() {
+    const location = useLocation();
+    const pathname = location.pathname;
     const [isScrolled, setIsScrolled] = useState(false);
-    const [activePath, setActivePath] = useState("/");
+    const [activePath, setActivePath] = useState(pathname);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isToolsOpen, setIsToolsOpen] = useState(false);
     const servicesRef = useRef<HTMLDivElement>(null);
     const toolsRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
-    const [ isSheetOpen, setIsSheetOpen ] = useState(false);
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -124,19 +128,18 @@ export default function Navbar() {
                             />
                         </Link>
                         <div className="hidden lg:flex space-x-1 items-center rounded-full px-2 py-1">
-                            {navItems.map((item) => (
-                                <Button
-                                    key={item.name}
-                                    variant="ghost"
-                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full ${activePath === item.href
-                                        ? "bg-primary/10 text-primary"
-                                        : "text-muted-foreground hover:bg-muted"
-                                        }`}
-                                    onClick={() => handleNavigation(item.href)}
-                                >
-                                    {item.name}
-                                </Button>
-                            ))}
+                            {
+                                navItems.map((item) => (
+                                    <Button
+                                        key={item.name}
+                                        variant="ghost"
+                                        className={`text-sm font-medium transition-colors hover:text-primary rounded-full`}
+                                        onClick={() => handleNavigation(item.href)}
+                                    >
+                                        {item.name}
+                                    </Button>
+                                ))
+                            }
                             {/* Tools Dropdown */}
                             <div
                                 ref={toolsRef}
@@ -147,24 +150,29 @@ export default function Navbar() {
                                 <Button
                                     variant="ghost"
                                     className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
-                                        ${isServicesOpen ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`}
+                                        ${isToolsOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
                                     Tools
                                 </Button>
                                 {
                                     isToolsOpen && (
-                                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-2 mt-2">
-                                            {tools.map((tool, index) => (
-                                                <div key={tool.path}>
-                                                    {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
-                                                    <Link
-                                                        to={tool.path}
-                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                                                    >
-                                                        {tool.title}
-                                                    </Link>
-                                                </div>
-                                            ))}
+                                        <div
+                                            className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-1"
+                                            onMouseLeave={() => setIsToolsOpen(false)}
+                                        >
+                                            {
+                                                tools.map((tool, index) => (
+                                                    <div key={tool.path}>
+                                                        {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                        <Link
+                                                            to={tool.path}
+                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                        >
+                                                            {tool.title}
+                                                        </Link>
+                                                    </div>
+                                                ))
+                                            }
                                         </div>
                                     )
                                 }
@@ -179,13 +187,16 @@ export default function Navbar() {
                                 <Button
                                     variant="ghost"
                                     className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
-                                        ${isServicesOpen ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`}
+                                        ${isServicesOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
                                     Services
                                 </Button>
                                 {
                                     isServicesOpen && (
-                                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-2 mt-2">
+                                        <div
+                                            className="absolute top-full left-2/3 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-1"
+                                            onMouseLeave={() => setIsServicesOpen(false)}
+                                        >
                                             {
                                                 services.map((service, index) => (
                                                     <div key={service.path}>
@@ -206,12 +217,12 @@ export default function Navbar() {
                         </div>
                         <div className="flex gap-2 items-center justify-center">
                             <Link
-                                to=""
+                                to="/clientbriefform"
                                 className="hidden md:flex"
                             >
                                 <RainbowButton>Rate Request Form</RainbowButton>
                             </Link>
-                            <Link to="/joinus">
+                            <Link to="/signin">
                                 <ShimmerButton className="hidden lg:flex">
                                     Login
                                 </ShimmerButton>
@@ -274,18 +285,18 @@ export default function Navbar() {
                                             <AccordionContent>
                                                 <div className="space-y-2 ml-4">
                                                     {
-                                                    tools.map((tool) => (
-                                                        <div
-                                                            key={tool.path}
-                                                            onClick={() => {
-                                                                handleNavigation(tool.path)
-                                                                setIsSheetOpen(false)
-                                                            }}
-                                                            className="block cursor-pointer py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                                                        >
-                                                            {tool.title}
-                                                        </div>
-                                                    ))
+                                                        tools.map((tool) => (
+                                                            <div
+                                                                key={tool.path}
+                                                                onClick={() => {
+                                                                    handleNavigation(tool.path)
+                                                                    setIsSheetOpen(false)
+                                                                }}
+                                                                className="block cursor-pointer py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                                            >
+                                                                {tool.title}
+                                                            </div>
+                                                        ))
                                                     }
                                                 </div>
                                             </AccordionContent>
@@ -293,12 +304,12 @@ export default function Navbar() {
                                     </Accordion>
                                     <div className="flex w-full flex-col gap-2">
                                         <Link
-                                            to=""
+                                            to="/clientbriefform"
                                             className="w-full flex md:hidden items-center justify-center"
                                         >
                                             <RainbowButton>Rate Request Form</RainbowButton>
                                         </Link>
-                                        <Link to="/login">
+                                        <Link to="/signin">
                                             <ShimmerButton
                                                 className="w-full"
                                             >
