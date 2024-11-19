@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import axios from "axios";
 // import toast, { Toaster } from "react-hot-toast";
 
@@ -54,6 +54,9 @@ const SignUp = () => {
                 <h1 className="text-3xl font-semibold">Create an Account</h1>
                 <div className="flex flex-col w-[40%]">
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                        {
+                            signUp.email
+                        }
                         <div className="flex flex-col gap-1">
                             <label className="text-md font-medium" htmlFor="name">Full Name</label>
                             <Input type="text" id="name" placeholder="Enter your name" onChange={(e: any) => setSignUp(c => ({

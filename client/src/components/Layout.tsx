@@ -9,7 +9,7 @@ const Layout: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
-            <main style={{ flex: 1, padding: '2rem' }}>
+            <main style={{ flex: 1, padding: '1rem' }}>
                 <Outlet />
                 <section
                     className="flex mt-10 flex-col sm:flex-row rounded-lg gap-10 items-center justify-around w-full bg-cover bg-center p-8"

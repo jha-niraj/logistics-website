@@ -1,8 +1,11 @@
-import { Clock, Building2, ChevronRight, ChevronLeft, Mail, MessageCircle } from 'lucide-react';
+import { Clock, Building2, ChevronRight, Mail, MessageCircle } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
 import carousalImage1 from "./Images/carousalImage1.png";
 import carousalImage2 from "./Images/carousalImage2.png";
 import carousalImage3 from "./Images/carousalImage3.png";
+import carousalImage4 from "./Images/bulk_cargo_export.jpg";
+import carousalImage5 from "./Images/bulk_cargo_import.jpg";
+import carousalImage6 from "./Images/vehicle.jpeg";
 import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -82,8 +85,9 @@ const services = [
 ];
 
 const HomePage = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [ currentSlide, setCurrentSlide ] = useState(0);
+    //@ts-ignore
+    const [ currentIndex, setCurrentIndex ] = useState(0);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -94,18 +98,18 @@ const HomePage = () => {
         e.preventDefault();
         console.log('Form submitted:', formData);
     };
-
     const inputVariants = {
         focus: { scale: 1.02 },
         blur: { scale: 1 }
     };
-
     const slides = [
         carousalImage1,
         carousalImage2,
-        carousalImage3
+        carousalImage3,
+        carousalImage4,
+        carousalImage5,
+        carousalImage6
     ];
-
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -113,7 +117,6 @@ const HomePage = () => {
 
         return () => clearInterval(timer);
     }, []);
-
     const goToSlide = (index: number) => {
         setCurrentSlide(index);
     };
@@ -312,7 +315,7 @@ const HomePage = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="max-w-7xl mx-auto mt-12 mb-16"
             >
-                <iframe className="w-full rounded-2xl" height={600} src="https://www.youtube.com/embed/275HREEbiLg?si=0mqeu5PbPjWuatBx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe className="w-full rounded-2xl" height={600} src="https://www.youtube.com/embed/275HREEbiLg?si=0mqeu5PbPjWuatBx" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

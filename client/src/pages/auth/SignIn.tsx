@@ -63,6 +63,9 @@ const SignIn = () => {
                 <h1 className="text-3xl font-semibold">Welcome, back</h1>
                 <div className="flex flex-col w-[40%]">
                     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                        {
+                            signIn.email
+                        }
                         <div className="flex flex-col gap-1">
                             <label className="text-md font-medium">Username</label>
                             <Input type="text" required placeholder="Enter your username" onChange={(e: any) => setSignIn(c => ({
