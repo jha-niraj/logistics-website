@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -10,6 +10,11 @@ import { RainbowButton } from "./ui/rainbow-button";
 import ShimmerButton from "./ui/shimmer-button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLocation } from "react-router-dom";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import ShinyButton from "./ui/shiny-button";
+import { useUser } from "@/Context/UserContext";
+import { Avatar, AvatarFallback } from "./ui/avatar";
+import toast, { Toaster } from "react-hot-toast";
 
 const services = [
     {
@@ -71,6 +76,7 @@ export default function Navbar() {
     const toolsRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
+    const { user, logout } = useUser();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -103,9 +109,17 @@ export default function Navbar() {
         setActivePath(href)
         navigate(href)
     }
+    const handleLogOut = () => {
+        logout();
+        setTimeout(() => {
+            navigate("/");
+        }, 1000);
+        toast.success("Logged out successfully");
+    }
 
     return (
         <section>
+            <Toaster />
             <div className="h-20 w-full" />
             <header
                 className={`fixed w-full top-0 left-0 right-0 z-50 bg-white border-b transition-shadow duration-300 ${isScrolled ? "shadow-md" : ""
@@ -214,19 +228,49 @@ export default function Navbar() {
                                     )
                                 }
                             </div>
+                            <div>
+                                {
+                                    user?.token ? 
+                                            <Link to="/kycverification">KYC</Link>
+                                        :
+                                            ""
+                                }
+                            </div>
                         </div>
-                        <div className="flex gap-2 items-center justify-center">
+                        <div className="flex gap-2 items-center justify-end">
                             <Link
                                 to="/clientbriefform"
                                 className="hidden md:flex"
                             >
-                                <RainbowButton>Rate Request Form</RainbowButton>
+                                <RainbowButton className="w-56">Rate Request Form</RainbowButton>
                             </Link>
-                            <Link to="/signin">
-                                <ShimmerButton className="hidden lg:flex">
-                                    Login
-                                </ShimmerButton>
-                            </Link>
+                            {
+                                user?.token ?
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger className="focus:outline-none">
+                                            <Avatar>
+                                                {/* <AvatarImage src={session?.user?.image!} alt="@shadcn" /> */}
+                                                <AvatarFallback><User size={24} /></AvatarFallback>
+                                            </Avatar>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent align="end" className="w-36">
+                                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                            <DropdownMenuSeparator />
+                                            <Link to="/dashboard">
+                                                <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                                            </Link>
+                                            <Link to="/profile">
+                                                <DropdownMenuItem>Profile</DropdownMenuItem>
+                                            </Link>
+                                            <DropdownMenuSeparator />
+                                            <DropdownMenuItem onClick={handleLogOut} className="text-red-500 flex gap-2">Log Out <span className="text-black underline">{user?.name}</span></DropdownMenuItem>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                    :
+                                    <Link to="/signin" className="w-full mx-auto">
+                                        <ShinyButton>Sign In</ShinyButton>
+                                    </Link>
+                            }
                         </div>
                     </div>
 

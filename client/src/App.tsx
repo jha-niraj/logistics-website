@@ -16,6 +16,8 @@ import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
 import OurEmployees from './pages/OurEmployees';
 import { AuthPage } from './pages/auth/Authentication';
+import KYCVerification from './pages/KycVerification';
+import Profile from './pages/Profile';
 
 const App = () => {
 
@@ -29,7 +31,9 @@ const App = () => {
 				<Route path='/ouremployees' element={ <OurEmployees /> } />
 				<Route path='/signup' element={ <SignUp /> } />
 				<Route path='/signin' element={ <SignIn /> } />
-				<Route path='/auth' element={ <AuthPage /> } />
+				<Route path='auth' element={ <AuthPage /> } />
+				<Route path='kycverification' element={ <KYCVerification /> } />
+				<Route path='profile' element={ <Profile /> } />
 				<Route path='services/freight-forwarding' element={ <FrieghtForwarding /> } />
 				<Route path='services/nvocc' element={ <Nvocc /> } />
 				<Route path='services/custom-brokerage' element={ <CustomBrokerage /> } />
