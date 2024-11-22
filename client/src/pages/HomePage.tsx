@@ -14,6 +14,13 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import ceoimage from "./Images/ceoImage.jpg";
+import service1 from "./Images/warehouseService.png";
+import service2 from "./Images/Air freightService.png";
+import service3 from "./Images/cargoService.png";
+import service4 from "./Images/trainService.jpeg";
+import service5 from "./Images/vehicleService.jpeg";
+import service6 from "./Images/waterFreightService.png";
+import service7 from "./Images/wineService.jpeg";
 
 const faqData = [
     {
@@ -58,36 +65,46 @@ const experiences = [
 ];
 const services = [
     {
-        title: "Global Logistics Solutions",
-        description: "Comprehensive logistics services tailored to your international shipping needs.",
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80"
+        title: "AIR FREIGHT SERVICES",
+        description: "U.S. Handle Worldwide Trade, LLC. provides professional and comprehensive Air Freight services committed to the safe, reliable and cost-effective delivery of your consignment.",
+        image: service2
     },
     {
-        title: "Customs Brokerage",
-        description: "Expert customs clearance services ensuring smooth import/export operations.",
-        image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&q=80"
+        title: "SEA FREIGHT SERVICES",
+        description: "U.S. Handle Worldwide Trade, LLC. provides a highly cost-effective method of transporting a range of large, heavy or normal loads.",
+        image: service6
     },
     {
-        title: "Supply Chain Management",
-        description: "End-to-end supply chain solutions optimizing your business operations.",
-        image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80"
+        title: "TRAIN FREIGHT SERVICES",
+        description: "U.S. Handle Worldwide Trade, LLC. provides a highly cost-effective method of transporting a range of large, heavy or normal loads.",
+        image: service4
     },
     {
-        title: "Freight Forwarding",
-        description: "Efficient transportation services across air, sea, and land routes.",
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80"
+        title: "PROJECT CARGO SERVICES",
+        description: "Handling Project Cargo is a specialized job which calls for expertise and experience in this particular field.",
+        image: service3
     },
     {
-        title: "Warehousing Solutions",
-        description: "Strategic storage and distribution services for your goods.",
-        image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80"
-    }
+        title: "ALCOHOL AND WINE EXPORTS",
+        description: "We specialize in exporting alcohol and wine with precision and care. We ensure your products reach global destinations swiftly and safely, meeting all international standards.",
+        image: service7
+    },
+    {
+        title: "LUXURY VEHICLE EXPORT & IMPORT",
+        description: "We provide premium logistics for the export and import of high-value vehicles. We ensure your luxury cars are handled with utmost care, reaching their destination safely and on time.",
+        image: service5
+    },
+    {
+        title: "WAREHOUSING SERVICES",
+        description: "Warehousing is an extremely dynamic Logistics service, wherein each client demands a tailor-made solution for his/her business model.",
+        image: service1
+    },
 ];
 
 const HomePage = () => {
-    const [ currentSlide, setCurrentSlide ] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0);
     //@ts-ignore
-    const [ currentIndex, setCurrentIndex ] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -120,7 +137,7 @@ const HomePage = () => {
     const goToSlide = (index: number) => {
         setCurrentSlide(index);
     };
-    
+
     return (
         <section>
             <motion.div
