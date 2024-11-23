@@ -5,6 +5,7 @@ require("dotenv").config();
 const port = process.env.PORT || 3002;
 
 const userRoutes = require("./routes/userRoutes");
+const contactRoutes = require("./routes/messageRoutes");
 const connectDB = require("./config/db");
 
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/v1", userRoutes);
+app.use("/api/v1", contactRoutes);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}---`);

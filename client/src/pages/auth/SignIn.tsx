@@ -28,6 +28,11 @@ const SignIn = () => {
                 throw new Error("Failed to Sign In");
             }
             const { msg, userId, name, username, token, error } = response.data;
+            console.log(name);
+            console.log(username);
+            console.log(token);
+            console.log(msg);
+            
             if (error) {
                 toast.error(error);
             }

@@ -18,31 +18,34 @@ import OurEmployees from './pages/OurEmployees';
 import { AuthPage } from './pages/auth/Authentication';
 import KYCVerification from './pages/KycVerification';
 import Profile from './pages/Profile';
+import { UserContextProvider } from './Context/UserContext';
 
 const App = () => {
 
 	return (
-		<Routes>
-			<Route path='/' element={<Layout />}>
-				<Route index element={ <HomePage /> } />
-				<Route path='/aboutus' element={ <AboutUs /> } />
-				<Route path='/partners' element={ <Partners /> } />
-				<Route path='/contactus' element={ <ContactUs /> } />
-				<Route path='/ouremployees' element={ <OurEmployees /> } />
-				<Route path='/signup' element={ <SignUp /> } />
-				<Route path='/signin' element={ <SignIn /> } />
-				<Route path='auth' element={ <AuthPage /> } />
-				<Route path='kycverification' element={ <KYCVerification /> } />
-				<Route path='profile' element={ <Profile /> } />
-				<Route path='services/freight-forwarding' element={ <FrieghtForwarding /> } />
-				<Route path='services/nvocc' element={ <Nvocc /> } />
-				<Route path='services/custom-brokerage' element={ <CustomBrokerage /> } />
-				<Route path='services/break-bulk-project-cargo' element={ <BreakBulk /> } />
-				<Route path='services/bill-of-landing' element={ <BillLanding /> } />
-				<Route path='services/market-entry' element={ <MarketEntry /> } />
-				<Route path='clientbriefform' element={ <ClientBriefForm /> } />
-			</Route>
-		</Routes>
+		<UserContextProvider>
+			<Routes>
+				<Route path='/' element={<Layout />}>
+					<Route index element={<HomePage />} />
+					<Route path='/aboutus' element={<AboutUs />} />
+					<Route path='/partners' element={<Partners />} />
+					<Route path='/contactus' element={<ContactUs />} />
+					<Route path='/ouremployees' element={<OurEmployees />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/signin' element={<SignIn />} />
+					<Route path='auth' element={<AuthPage />} />
+					<Route path='kycverification' element={<KYCVerification />} />
+					<Route path='profile' element={<Profile />} />
+					<Route path='services/freight-forwarding' element={<FrieghtForwarding />} />
+					<Route path='services/nvocc' element={<Nvocc />} />
+					<Route path='services/custom-brokerage' element={<CustomBrokerage />} />
+					<Route path='services/break-bulk-project-cargo' element={<BreakBulk />} />
+					<Route path='services/bill-of-landing' element={<BillLanding />} />
+					<Route path='services/market-entry' element={<MarketEntry />} />
+					<Route path='clientbriefform' element={<ClientBriefForm />} />
+				</Route>
+			</Routes>
+		</UserContextProvider>
 	)
 }
 

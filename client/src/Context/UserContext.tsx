@@ -25,6 +25,7 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
         const savedUser = localStorage.getItem('user');
         return savedUser ? JSON.parse(savedUser) : null;
     });
+    console.log("Context API user: " + user?.email);
 
     useEffect(() => {
         if (user) {

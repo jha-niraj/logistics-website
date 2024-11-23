@@ -3,10 +3,10 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userMiddleware = require("../middlewares/userMiddleware.js");
-const { User, Book } = require("../database/userSchema.js");
+const { User } = require("../database/userSchema.js");
 
 // Importing the zod schema from zod:
-const { userSignUpSchema, userSignInSchema, bookSchema } = require("../zod.js");
+const { userSignUpSchema, userSignInSchema } = require("../zod.js");
 
 router.post("/signup", async (req, res) => {
     const { fullname, username, password } = req.body;
@@ -59,7 +59,7 @@ router.post("/signup", async (req, res) => {
         })
     }
 })
-router.post("/signin", async (req, res) => {
+router.post("/signin", async(req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -101,6 +101,48 @@ router.post("/signin", async (req, res) => {
             msg: "Error while signin!!!"
         })
         return;
+    }
+})
+router.put("/updatepassword", userMiddleware, async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    const userId = req.user;
+
+    try {
+        if (!currentPassword || !newPassword) {
+            return res.status(400).json({
+                msg: "Both old and new passwords are required"
+            });
+        }
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(501).josn({
+                msg: "User not found"
+            })
+        } else {
+            const matchedPassword = await bcrypt.compare(currentPassword, user.password);
+            if (!matchedPassword) {
+                return res.status(501).json({
+                    msg: "Old password incorrect!!!"
+                })
+            } else {
+                const updatedPassword = await bcrypt.hash(newPassword, 10);
+                if (!updatedPassword) {
+                    return res.status(501).json({
+                        msg: "Cannot update the password"
+                    })
+                } else {
+                    user.password = updatedPassword;
+                    await user.save();
+
+                    return res.status(200).json({
+                        msg: "Password updated successfully"
+                    })
+                }
+            }
+        }
+    } catch (err) {
+        console.log("Error: " + err);
+        throw new Error("Password updation failed");
     }
 })
 

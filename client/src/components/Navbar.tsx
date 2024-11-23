@@ -256,9 +256,6 @@ export default function Navbar() {
                                         <DropdownMenuContent align="end" className="w-36">
                                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                             <DropdownMenuSeparator />
-                                            <Link to="/dashboard">
-                                                <DropdownMenuItem>Dashboard</DropdownMenuItem>
-                                            </Link>
                                             <Link to="/profile">
                                                 <DropdownMenuItem>Profile</DropdownMenuItem>
                                             </Link>

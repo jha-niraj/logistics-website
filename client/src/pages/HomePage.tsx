@@ -21,6 +21,7 @@ import service4 from "./Images/trainService.jpeg";
 import service5 from "./Images/vehicleService.jpeg";
 import service6 from "./Images/waterFreightService.png";
 import service7 from "./Images/wineService.jpeg";
+import toast, { Toaster } from "react-hot-toast";
 
 const faqData = [
     {
@@ -111,10 +112,52 @@ const HomePage = () => {
         comments: '',
         agreeToTerms: false
     });
-    const handleSubmit = (e: React.FormEvent) => {
+    const [ isSubmitting, setIsSubmitting ] = useState<Boolean>(false); 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+
+        if (!formData.agreeToTerms) {
+            toast.error('Please agree to the terms and conditions');
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('http://localhost:3002/api/v1/contactform', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    comments: formData.comments
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success('Message sent successfully!');
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    comments: '',
+                    agreeToTerms: false
+                });
+            } else {
+                toast.error(data.message || 'Failed to send message');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            toast.error('Failed to send message. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
     const inputVariants = {
         focus: { scale: 1.02 },
         blur: { scale: 1 }
@@ -140,6 +183,7 @@ const HomePage = () => {
 
     return (
         <section>
+            <Toaster />
             <motion.div
                 className="w-full mx-auto mb-16 relative h-[80vh] rounded-lg overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
@@ -495,7 +539,9 @@ const HomePage = () => {
                             type="submit"
                             className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
                         >
-                            Submit Feedback
+                            {
+                                isSubmitting ? "Submitting Feedback" : "Submit Feedback"
+                            }
                         </ShimmerButton>
                     </form>
                 </AnimatedSection>
