@@ -1,155 +1,194 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import React, { useState } from 'react';
+import { Download, Eye, FileText, ClipboardCheck, HelpCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { useUser } from '@/Context/UserContext';
+import kycDocument from "@/assets/Corporate KYC (4).pdf";
+import ShimmerButton from '@/components/ui/shimmer-button';
 
-const KYCVerification = () => {
-    const navigate = useNavigate();
-    const { user } = useUser();
-    const [userData, setUserData] = useState({
-        name: '',
-        email: '',
-        phoneNumber: '',
-        address: '',
-        termsAgreed: false,
-    });
+// IMPORTANT: Replace this path with your actual PDF file path
+const PDF_FILE_PATH = '/path/to/your/kyc-form.pdf';
 
-    // Check authentication
-    useEffect(() => {
-        const isAuthenticated = localStorage.getItem('token');
-        if (!isAuthenticated) {
-            navigate('/login');
+type Step = {
+    id: number;
+    title: string;
+    description: string;
+    details: string[];
+    icon: React.ReactNode;
+};
+
+const KYCSubmission = () => {
+    const [currentStep, setCurrentStep] = useState<number>(1);
+    const [showAlert, setShowAlert] = useState<boolean>(false);
+
+    const steps: Step[] = [
+        {
+            id: 1,
+            title: "Download the Form",
+            description: "Download our KYC verification form",
+            details: [
+                "Click the 'Download Form' button below",
+                "Save the PDF file to your device",
+                "Ensure you have a PDF reader installed"
+            ],
+            icon: <Download className="h-6 w-6" />,
+        },
+        {
+            id: 2,
+            title: "Review Requirements",
+            description: "Check required documents",
+            details: [
+                "Valid government-issued ID (Passport/Driver's License)",
+                "Proof of address (Utility bill/Bank statement)",
+                "Recent photograph (if required)",
+                "Additional documents based on account type"
+            ],
+            icon: <ClipboardCheck className="h-6 w-6" />,
+        },
+        {
+            id: 3,
+            title: "Fill the Form",
+            description: "Complete all required fields",
+            details: [
+                "Use Adobe Reader or similar PDF software",
+                "Fill in all mandatory fields marked with (*)",
+                "Ensure all information matches your documents",
+                "Sign and date the form where required"
+            ],
+            icon: <FileText className="h-6 w-6" />,
+        },
+        {
+            id: 4,
+            title: "Verify Information",
+            description: "Double-check all entries",
+            details: [
+                "Review all entered information for accuracy",
+                "Verify document attachments are clear and valid",
+                "Ensure signature is clear and matches your ID",
+                "Check form completion status"
+            ],
+            icon: <HelpCircle className="h-6 w-6" />,
         }
-    }, [navigate]);
+    ];
 
-    // // Populate known user data
-    // useEffect(() => {
-    //     const storedName = localStorage.getItem('userName');
-    //     const storedEmail = localStorage.getItem('userEmail');
-
-    //     setUserData(prev => ({
-    //         ...prev,
-    //         name: storedName || '',
-    //         email: storedEmail || ''
-    //     }));
-    // }, []);
-
-    const handleInputChange = (e: any) => {
-        const { name, value } = e.target;
-        setUserData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+    const handlePreview = () => {
+        // Open PDF in new tab
+        window.open(PDF_FILE_PATH, '_blank');
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        // Validation
-        if (!userData.phoneNumber || !userData.address || !userData.termsAgreed) {
-            toast.error('Please fill all required fields and agree to terms');
-            return;
-        }
-
-        try {
-            // Create form data to send
-            const formData = new FormData();
-            formData.append('name', userData.name);
-            formData.append('email', userData.email);
-            formData.append('phoneNumber', userData.phoneNumber);
-            formData.append('address', userData.address);
-
-            // Send email with KYC details
-            const response = await fetch('/api/send-kyc-verification', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-                toast.success('KYC Verification submitted successfully');
-                navigate('/dashboard');
-            } else {
-                toast.error('Failed to submit KYC Verification');
-            }
-        } catch (error) {
-            console.error('KYC Submission Error:', error);
-            toast.error('An error occurred during submission');
-        }
+    const handleDownload = () => {
+        // Create download link
+        const link = document.createElement('a');
+        link.href = kycDocument;
+        link.download = 'KYC-Verification-Form.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setCurrentStep(2);
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 3000);
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <Toaster />
-            <Card className="max-w-2xl mx-auto">
-                <CardHeader>
-                    <CardTitle>KYC Verification</CardTitle>
-                    <img
-                        src="/path/to/terms-conditions-image.jpg"
-                        alt="Terms and Conditions"
-                        className="w-full h-48 object-cover rounded-t-lg"
-                    />
-                </CardHeader>
-                <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <Input
-                            name="name"
-                            value={userData.name}
-                            onChange={handleInputChange}
-                            placeholder="Name"
-                            disabled
-                        />
-                        <Input
-                            name="email"
-                            value={userData.email}
-                            onChange={handleInputChange}
-                            placeholder="Email"
-                            disabled
-                        />
-                        <Input
-                            name="phoneNumber"
-                            value={userData.phoneNumber}
-                            onChange={handleInputChange}
-                            placeholder="Phone Number"
-                            required
-                        />
-                        <Input
-                            name="address"
-                            value={userData.address}
-                            onChange={handleInputChange}
-                            placeholder="Address"
-                            required
-                        />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-4 sm:px-6 lg:px-8">
+            {
+                showAlert && (
+                    <div className="fixed top-4 right-4 z-50">
+                        <Alert className="bg-green-50 border-green-200">
+                            <AlertDescription className="text-green-800">
+                                Form downloaded successfully! Please check your downloads folder.
+                            </AlertDescription>
+                        </Alert>
+                    </div>
+                )
+            }
 
-                        {/* Terms and Conditions Checkbox */}
-                        <div className="flex items-center space-x-2">
-                            {/* <Checkbox
-                                id="terms"
-                                checked={userData.termsAgreed}
-                                onCheckedChange={(checked) => setUserData(prev => ({
-                                    ...prev,
-                                    termsAgreed: checked
-                                }))}
-                            /> */}
-                            <label
-                                htmlFor="terms"
-                                className="text-sm font-medium leading-none"
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+                        KYC Document Submission
+                    </h1>
+                    <p className="text-xl text-gray-600">
+                        Complete your verification in a few simple steps
+                    </p>
+                </div>
+
+                {/* Steps */}
+                <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {
+                        steps.map((step) => (
+                            <Card
+                                key={step.id}
+                                className={`transform transition-all duration-200 hover:shadow-lg ${currentStep >= step.id ? 'border-blue-200 bg-blue-50' : 'bg-white'
+                                    }`}
                             >
-                                I agree to all terms and conditions
-                            </label>
-                        </div>
+                                <CardHeader>
+                                    <div className="flex items-center gap-4">
+                                        <div
+                                            className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= step.id
+                                                ? 'bg-blue-100 text-blue-600'
+                                                : 'bg-gray-100 text-gray-400'
+                                                }`}
+                                        >
+                                            {step.icon}
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-semibold text-gray-500">
+                                                Step {step.id}
+                                            </p>
+                                            <h3 className="font-semibold text-lg">{step.title}</h3>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-600 mb-4">{step.description}</p>
+                                    <ul className="space-y-2">
+                                        {
+                                            step.details.map((detail, index) => (
+                                                <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
+                                                    <span className="block w-1 h-1 mt-2 rounded-full bg-gray-400" />
+                                                    {detail}
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                        ))
+                    }
+                </div>
 
-                        <Button type="submit" className="w-full">
-                            Submit KYC Verification
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
+                {/* Action Card */}
+                <Card className="w-full bg-white shadow-xl">
+                    <CardHeader>
+                        <CardTitle>Download KYC Form</CardTitle>
+                        <CardDescription>
+                            Preview or download the verification form to get started
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Button
+                                onClick={handlePreview}
+                                variant="outline"
+                                className="flex-1 py-6 text-lg hover:bg-gray-50"
+                            >
+                                <Eye className="h-5 w-5 mr-2" />
+                                Preview Form
+                            </Button>
+                            <ShimmerButton
+                                onClick={handleDownload}
+                                className="flex-1 text-lg"
+                            >
+                                <Download className="h-5 w-5 mr-2" />
+                                Download Form
+                            </ShimmerButton>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
     );
 };
 
-export default KYCVerification;
+export default KYCSubmission;

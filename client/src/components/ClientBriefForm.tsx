@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Building2, Package, Briefcase, Globe, Mail, Phone, MapPin, Star, CheckCircle2 } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
+import { useUser } from "@/Context/UserContext";
 
 const ClientBriefForm = () => {
     const [formData, setFormData] = useState({
@@ -19,16 +21,61 @@ const ClientBriefForm = () => {
         productToExport: "",
         referenceNumber: "",
     });
-
     const [activeSection, setActiveSection] = useState(0);
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log(formData);
-    };
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { user } = useUser();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleNext = () => {
+        setActiveSection(activeSection + 1);
+    };
+    const handlePrevious = () => {
+        setActiveSection(activeSection - 1);
+    };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('http://localhost:3002/api/v1/raterequestform', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user?.token}`
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success('Rate REquest Form sent successfully!');
+                // Reset form
+                setFormData({
+                    clientName: "",
+                    brandName: "",
+                    address: "",
+                    phone: "",
+                    email: "",
+                    products: "",
+                    productOrigin: "",
+                    objective: "",
+                    productToExport: "",
+                    referenceNumber: "",
+                });
+                setActiveSection(0);
+            } else {
+                toast.error(data.message || 'Failed to send rate request form');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            toast.error('Failed to send rate request form. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const sections = [
@@ -198,6 +245,7 @@ const ClientBriefForm = () => {
 
     return (
         <div className="bg-gray-50 min-h-screen flex items-center justify-center rounded-2xl">
+            <Toaster />
             <Card className="w-full max-w-4xl shadow-xl">
                 <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4">
                     <CardTitle className="text-xl font-bold text-center flex items-center justify-center">
@@ -227,38 +275,44 @@ const ClientBriefForm = () => {
                     </div>
 
                     {/* Dynamic Form Content */}
-                    <form onSubmit={handleSubmit}>
-                        {sections[activeSection].content}
+                    {sections[activeSection].content}
 
-                        {/* Navigation Buttons */}
-                        <div className="flex justify-between mt-4 pt-2 border-t">
-                            {activeSection > 0 && (
+                    {/* Navigation Buttons */}
+                    <div className="flex justify-between mt-4 pt-2 border-t">
+                        {
+                            activeSection > 0 && (
                                 <Button
                                     type="button"
                                     variant="outline"
-                                    onClick={() => setActiveSection(activeSection - 1)}
+                                    onClick={handlePrevious}
                                 >
                                     Previous
                                 </Button>
-                            )}
-                            {activeSection < sections.length - 1 ? (
+                            )
+                        }
+                        {
+                            activeSection < sections.length - 1 ? (
                                 <Button
                                     type="button"
-                                    onClick={() => setActiveSection(activeSection + 1)}
+                                    onClick={handleNext}
                                     className="ml-auto"
                                 >
                                     Next
                                 </Button>
                             ) : (
-                                <Button
-                                    type="submit"
-                                    className="bg-green-500 hover:bg-green-600"
-                                >
-                                    Submit Form
-                                </Button>
-                            )}
-                        </div>
-                    </form>
+                                <form onSubmit={handleSubmit} className="ml-auto">
+                                    <Button
+                                        type="submit"
+                                        className="bg-green-500 hover:bg-green-600"
+                                    >
+                                        {
+                                            isSubmitting ? "Submittng" : "Submit Form"
+                                        }
+                                    </Button>
+                                </form>
+                            )
+                        }
+                    </div>
                 </CardContent>
             </Card>
         </div>

@@ -46,7 +46,7 @@ const submitRateRequestForm = async (req, res) => {
             referenceNumber
         )
 
-        if(!clientName || !brandName || !address || !phone || !email || products || !productOrigin || !objective || !productToExport || !referenceNumber) {
+        if(!clientName || !brandName || !address || !phone || !email || !products || !productOrigin || !objective || !productToExport || !referenceNumber) {
             return res.status(400).json({
                 success: false,
                 message: 'Please provide all required fields'

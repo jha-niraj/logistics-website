@@ -55,7 +55,7 @@ export default function Profile() {
     }
 
     return (
-        <div className="max-w-7xl mx-auto py-10">
+        <div className="max-w-7xl mx-auto py-24">
             <Toaster />
             <h1 className="text-3xl font-bold mb-6">My Profile</h1>
             <div className="w-full flex flex-col md:flex-row gap-4">

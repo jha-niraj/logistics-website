@@ -27,9 +27,9 @@ const SignIn = () => {
             if (!response || !response.data) {
                 throw new Error("Failed to Sign In");
             }
-            const { msg, userId, name, username, token, error } = response.data;
+            const { msg, userId, name, email, token, error } = response.data;
             console.log(name);
-            console.log(username);
+            console.log(email);
             console.log(token);
             console.log(msg);
             
@@ -39,7 +39,7 @@ const SignIn = () => {
             setUser({
                 userId: userId,
                 name: name,
-                email: username,
+                email: email,
                 token: token
             })
             toast.success(msg);
@@ -63,7 +63,7 @@ const SignIn = () => {
     return (
         <main className="w-full h-screen">
             <Toaster />
-            <div className="flex flex-col gap-10 items-center py-20 justify-center">
+            <div className="flex flex-col gap-10 items-center py-20 h-full justify-center">
                 <h1 className="text-3xl font-semibold">Welcome, back</h1>
                 <div className="flex flex-col w-[40%]">
                     <form onSubmit={handleSubmit} className="flex flex-col gap-3">

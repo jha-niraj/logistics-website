@@ -56,7 +56,7 @@ const SignUp = () => {
     return (
         <main className="w-full h-screen py-20">
             <Toaster />
-            <div className="flex flex-col gap-10 items-center justify-center">
+            <div className="flex flex-col gap-10 items-center h-full justify-center">
                 <h1 className="text-3xl font-semibold">Create an Account</h1>
                 <div className="flex flex-col w-[40%]">
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5">

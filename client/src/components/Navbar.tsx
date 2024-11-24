@@ -120,7 +120,6 @@ export default function Navbar() {
     return (
         <section>
             <Toaster />
-            <div className="h-20 w-full" />
             <header
                 className={`fixed w-full top-0 left-0 right-0 z-50 bg-white border-b transition-shadow duration-300 ${isScrolled ? "shadow-md" : ""
                     }`}

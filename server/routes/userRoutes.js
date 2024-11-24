@@ -84,12 +84,13 @@ router.post("/signin", async(req, res) => {
                     })
                     return;
                 } else {
+                    console.log(user);
                     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
                     res.status(200).json({
                         msg: 'User Authentication Successfull',
-                        id: user._id,
-                        fullname: user.fullname,
-                        email: user.username,
+                        userId: user?._id,
+                        name: user?.fullname,
+                        email: user?.username,
                         token: token
                     })
                 }
