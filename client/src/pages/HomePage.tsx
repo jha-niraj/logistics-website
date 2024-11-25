@@ -22,6 +22,7 @@ import service5 from "./Images/vehicleService.jpeg";
 import service6 from "./Images/waterFreightService.png";
 import service7 from "./Images/wineService.jpeg";
 import toast, { Toaster } from "react-hot-toast";
+import SocialIcons from '@/components/SocialIcons';
 
 const faqData = [
     {
@@ -182,8 +183,9 @@ const HomePage = () => {
     };
 
     return (
-        <section>
+        <section className="py-24">
             <Toaster />
+            <SocialIcons />
             <motion.div
                 className="w-full mx-auto mb-16 relative h-[80vh] rounded-lg overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
@@ -191,7 +193,7 @@ const HomePage = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
             >
                 <div
-                    className="flex transition-transform duration-500 ease-out h-full"
+                    className="flex transition-transform duration-500 ease-out h-full -z-10"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
                     {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Eye, FileText, ClipboardCheck, HelpCircle } from 'lucide-react';
+import { Download, Eye, FileText, ClipboardCheck, HelpCircle, Upload } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -50,7 +50,6 @@ const KYCSubmission = () => {
             title: "Fill the Form",
             description: "Complete all required fields",
             details: [
-                "Use Adobe Reader or similar PDF software",
                 "Fill in all mandatory fields marked with (*)",
                 "Ensure all information matches your documents",
                 "Sign and date the form where required"
@@ -68,6 +67,13 @@ const KYCSubmission = () => {
                 "Check form completion status"
             ],
             icon: <HelpCircle className="h-6 w-6" />,
+        },
+        {
+            id: 5,
+            title: "Upload the document to this G-Mail",
+            description: "contact@ushwt.com",
+            details: [],
+            icon: <Upload className="h-6 w-6" />
         }
     ];
 

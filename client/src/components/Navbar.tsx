@@ -179,6 +179,7 @@ export default function Navbar() {
                                                         {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
                                                         <Link
                                                             to={tool.path}
+                                                            target="_blank"
                                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
                                                         >
                                                             {tool.title}

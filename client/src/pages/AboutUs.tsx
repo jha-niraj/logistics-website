@@ -18,7 +18,7 @@ const ValueCard: React.FC<ValueProps> = ({ title, content }) => (
 
 const AboutUs = () => {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen py-24">
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}

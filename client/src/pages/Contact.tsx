@@ -16,7 +16,7 @@ const ContactUs = () => {
     };
 
     return (
-        <section className="w-full flex flex-col gap-4 sm:gap-0">
+        <section className="w-full flex flex-col gap-4 sm:gap-0 py-20">
             <div className="min-h-screen ">
                 <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="grid md:grid-cols-2">
@@ -41,7 +41,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <p className="font-semibold">Address:</p>
-                                            <p className="text-blue-100">13501 Katy Freeway Suite 1625 US.</p>
+                                            <p className="text-blue-100">13501 Katy Freeway Houston, TX 77079 USA</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">
