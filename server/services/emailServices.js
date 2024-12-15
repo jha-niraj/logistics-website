@@ -4,7 +4,7 @@ const sendContactFormEmail = async (formData) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: 'nirajjha3110@gmail.com',
+            to: 'singhkratik799@gmail.com',
             subject: 'New Contact Form Submission',
             html: `
                 <h2>New Contact Form Submission</h2>
@@ -26,7 +26,7 @@ const sendRateRequestMessage = async (formData) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "nirajjha3110@gmail.com",
+            to: "singhkratik799@gmail.com",
             subject: "Rate Request Inquiery",
             html: `
                 <!DOCTYPE html>

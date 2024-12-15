@@ -30,9 +30,9 @@ const SignUp = () => {
             } 
             const user = response.data;
             setUser({
-                userId: user.userId,
-                name: user.name,
-                email: user.username,
+                userId: user.id,
+                name: user.fullname,
+                email: user.email,
                 token: user.token
             })
             toast.success(response.data.msg);

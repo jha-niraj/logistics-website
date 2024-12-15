@@ -230,10 +230,10 @@ export default function Navbar() {
                             </div>
                             <div>
                                 {
-                                    user?.token ? 
-                                            <Link to="/kycverification">KYC</Link>
+                                    user?.token ?
+                                        <Link to="/kycverification">KYC</Link>
                                         :
-                                            ""
+                                        ""
                                 }
                             </div>
                         </div>
@@ -248,8 +248,7 @@ export default function Navbar() {
                                 user?.token ?
                                     <DropdownMenu>
                                         <DropdownMenuTrigger className="focus:outline-none">
-                                            <Avatar>
-                                                {/* <AvatarImage src={session?.user?.image!} alt="@shadcn" /> */}
+                                            <Avatar className="hidden lg:flex">
                                                 <AvatarFallback><User size={24} /></AvatarFallback>
                                             </Avatar>
                                         </DropdownMenuTrigger>
@@ -283,20 +282,22 @@ export default function Navbar() {
                                     <SheetTitle>Menu</SheetTitle>
                                 </SheetHeader>
                                 <div className="grid gap-4 py-4 w-full">
-                                    {navItems.map((item) => (
-                                        <Button
-                                            key={item.name}
-                                            variant="ghost"
-                                            className={`justify-start ${activePath === item.href ? "text-primary" : "text-muted-foreground"
-                                                }`}
-                                            onClick={() => {
-                                                handleNavigation(item.href)
-                                                setIsSheetOpen(false)
-                                            }}
-                                        >
-                                            {item.name}
-                                        </Button>
-                                    ))}
+                                    {
+                                        navItems.map((item) => (
+                                            <Button
+                                                key={item.name}
+                                                variant="ghost"
+                                                className={`justify-start ${activePath === item.href ? "text-primary" : "text-muted-foreground"
+                                                    }`}
+                                                onClick={() => {
+                                                    handleNavigation(item.href)
+                                                    setIsSheetOpen(false)
+                                                }}
+                                            >
+                                                {item.name}
+                                            </Button>
+                                        ))
+                                    }
                                     <Accordion type="single" collapsible className="w-full">
                                         <AccordionItem value="services">
                                             <AccordionTrigger className="text-left px-4">
@@ -350,13 +351,26 @@ export default function Navbar() {
                                         >
                                             <RainbowButton>Rate Request Form</RainbowButton>
                                         </Link>
-                                        <Link to="/signin">
-                                            <ShimmerButton
-                                                className="w-full"
-                                            >
-                                                Login
-                                            </ShimmerButton>
-                                        </Link>
+                                        {
+                                            user?.token ?
+                                                <div>
+                                                    <div className="flex w-full justify-between">
+                                                        <Avatar>
+                                                            <AvatarFallback><User size={24} /></AvatarFallback>
+                                                        </Avatar>
+                                                        <Link to="/profile">Profile</Link>
+                                                    </div>
+                                                    <ShimmerButton onClick={() => logout()}>Log Out</ShimmerButton>
+                                                </div>
+                                                :
+                                                <Link to="/signin">
+                                                    <ShimmerButton
+                                                        className="w-full"
+                                                    >
+                                                        Login
+                                                    </ShimmerButton>
+                                                </Link>
+                                        }
                                     </div>
                                 </div>
                             </SheetContent>

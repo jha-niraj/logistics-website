@@ -76,10 +76,10 @@ export default function Profile() {
                                 <Label htmlFor="email">Email</Label>
                                 <Input id="email" value={user?.email} readOnly />
                             </div>
-                            <div className="grid gap-2">
+                            {/* <div className="grid gap-2">
                                 <Label htmlFor="company">Company</Label>
                                 <Input id="company" value="Global Logistics Inc." readOnly />
-                            </div>
+                            </div> */}
                         </div>
                     </CardContent>
                 </Card>
