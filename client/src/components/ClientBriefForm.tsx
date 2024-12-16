@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Building2, Package, Briefcase, Globe, Mail, Phone, MapPin, Star, CheckCircle2 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { useUser } from "@/Context/UserContext";
+import { BASE_URL } from "@/config";
 
 const ClientBriefForm = () => {
     const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const ClientBriefForm = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:3002/api/v1/raterequestform', {
+            const response = await fetch(`${BASE_URL}/raterequestform`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

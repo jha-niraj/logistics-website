@@ -23,6 +23,7 @@ import service6 from "./Images/waterFreightService.png";
 import service7 from "./Images/wineService.jpeg";
 import toast, { Toaster } from "react-hot-toast";
 import SocialIcons from '@/components/SocialIcons';
+import { BASE_URL } from '@/config';
 
 const faqData = [
     {
@@ -125,7 +126,7 @@ const HomePage = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:3002/api/v1/feedbackform', {
+            const response = await fetch(`${BASE_URL}/feedbackform`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -7,6 +7,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import contactImage from "@/pages/Images/contactPageImage.avif";
 import toast, { Toaster } from "react-hot-toast";
+import { BASE_URL } from '@/config';
 
 const ContactUs = () => {
     const copyNumber = () => {
@@ -26,7 +27,7 @@ const ContactUs = () => {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch('http://localhost:3002/api/v1/contactform', {
+            const response = await fetch(`${BASE_URL}/contactform`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
