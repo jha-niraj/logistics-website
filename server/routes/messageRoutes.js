@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { sendContactFormEmail, sendRateRequestMessage } = require("../services/emailServices");
+const { sendContactFormEmail, sendRateRequestMessage, sendEmailFromContactPage } = require("../services/emailServices");
 const userMiddleware = require("../middlewares/userMiddleware");
 
-const submitContactForm = async (req, res) => {
+const submitFeedbackForm = async (req, res) => {
     try {
         const { name, email, comments } = req.body;
 
@@ -17,6 +17,33 @@ const submitContactForm = async (req, res) => {
 
         // Send email
         await sendContactFormEmail({ name, email, comments });
+
+        res.status(200).json({
+            success: true,
+            message: 'Feedback form submitted successfully'
+        });
+    } catch (error) {
+        console.error('Feedback form submission error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to submit feedback form'
+        });
+    }
+};
+const submitContactForm = async (req, res) => {
+    try {
+        const { name, email, subject, message } = req.body;
+
+        // Validate input
+        if (!name || !email || !subject || !message) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide all required fields'
+            });
+        }
+
+        // Send email
+        await sendEmailFromContactPage({ name, email, subject, message });
 
         res.status(200).json({
             success: true,
@@ -82,6 +109,7 @@ const submitRateRequestForm = async (req, res) => {
     }
 }
 
+router.post("/feedbackform", submitFeedbackForm);
 router.post("/contactform", submitContactForm);
 router.post("/raterequestform", userMiddleware, submitRateRequestForm);
 

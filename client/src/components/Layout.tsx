@@ -4,11 +4,18 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ShimmerButton from './ui/shimmer-button';
 import footerImage from "../pages/Images/footerImage.jpg";
+import toast, { Toaster } from "react-hot-toast";
 
 const Layout: React.FC = () => {
+    const copyNumber = () => {
+        navigator.clipboard.writeText("1-346-202-1929");
+        toast.success("Phone Number Copied")
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
+            <Toaster />
             <main style={{ flex: 1, padding: '1rem' }}>
                 <Outlet />
                 <section
@@ -24,7 +31,7 @@ const Layout: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <ShimmerButton className="px-6 py-3">
+                        <ShimmerButton onClick={copyNumber} className="px-6 py-3">
                             Call us Now
                         </ShimmerButton>
                     </div>

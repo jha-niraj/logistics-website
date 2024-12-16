@@ -38,7 +38,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ title, description }) =
 
 const MarketEntry = () => {
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="grid md:grid-cols-2 gap-8">

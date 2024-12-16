@@ -6,29 +6,71 @@ import ShimmerButton from "@/components/ui/shimmer-button";
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import contactImage from "@/pages/Images/contactPageImage.avif";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactUs = () => {
-    const [messageSent, setMessageSent] = useState(false);
+    const copyNumber = () => {
+        navigator.clipboard.writeText("1-346-202-1929");
+        toast.success("Phone Number Copied")
+    }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState<Boolean>(false);
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setMessageSent(true);
+
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('http://localhost:3002/api/v1/contactform', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success('Message sent successfully!');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                toast.error(data.message || 'Failed to send message');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            toast.error('Failed to send message. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
         <section className="w-full flex flex-col gap-4 sm:gap-0 py-20">
+            <Toaster />
             <div className="min-h-screen ">
                 <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="grid md:grid-cols-2">
-                        {/* Left Side - Contact Info */}
                         <section
                             className="flex flex-col sm:flex-row rounded-lg gap-10 items-center justify-around w-full bg-cover bg-center relative"
                             style={{ backgroundImage: `url(${contactImage})` }}
                         >
-                            {/* Overlay */}
                             <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm rounded-lg"></div>
-
-                            {/* Content */}
                             <div className="relative text-white p-8 sm:p-16">
                                 <h2 className="text-3xl font-bold mb-8 text-center sm:text-left">Let's get in touch</h2>
                                 <p className="mb-8 text-center sm:text-left">
@@ -88,15 +130,9 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </section>
-                        {/* Right Side - Contact Form */}
                         <div className="p-8">
                             <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in touch</h2>
                             {
-                            messageSent ? (
-                                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                                    <p className="font-medium">Your message was sent, thank you!</p>
-                                </div>
-                            ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <div>
@@ -105,6 +141,8 @@ const ContactUs = () => {
                                                 type="text"
                                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                                 placeholder="Name"
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             />
                                         </div>
                                         <div>
@@ -113,6 +151,9 @@ const ContactUs = () => {
                                                 type="email"
                                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                                 placeholder="Email"
+                                                value={formData.email}
+                                                required
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             />
                                         </div>
                                     </div>
@@ -122,6 +163,8 @@ const ContactUs = () => {
                                             type="text"
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             placeholder="Subject"
+                                            value={formData.subject}
+                                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                         />
                                     </div>
                                     <div>
@@ -130,16 +173,19 @@ const ContactUs = () => {
                                             rows={4}
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             placeholder="Message"
+                                            value={formData.message}
+                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         ></textarea>
                                     </div>
                                     <ShimmerButton
                                         type="submit"
                                         className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium"
                                     >
-                                        Send Message
+                                        {
+                                            isSubmitting ? "Sending Message" : "Sent Message"
+                                        }
                                     </ShimmerButton>
                                 </form>
-                            )
                             }
                         </div>
                     </div>
@@ -151,12 +197,12 @@ const ContactUs = () => {
                     <div className="flex flex-col gap-4 p-4 rounded-2xl bg-white items-center justify-center shadow-2xl">
                         <BsRobot className="" size={48} />
                         <p className='text-center text-black'>Need quick assistant? Chat with out smart bot for instant support!</p>
-                        <ShimmerButton className='w-full sm:w-auto'>Start chat</ShimmerButton>
+                        <ShimmerButton className='w-full sm:w-auto'>Start chat(Coming Soon...)</ShimmerButton>
                     </div>
                 </div>
                 <div className='flex flex-col items-center justify-center gap-4 rounded-2xl  p-6'>
                     <h1 className="text-2xl font-semibold">Have more doubts?</h1>
-                    <div className="flex flex-col gap-4 p-4 rounded-2xl items-center justify-center shadow-2xl">
+                    <div className="flex flex-col gap-4 p-4 rounded-2xl items-center justify-center shadow-2xl" onClick={copyNumber}>
                         <GrUserExpert className="" size={48} />
                         <p className='text-center text-black'>Reach out to our experts for detailed support.</p>
                         <ShimmerButton className='w-full sm:w-auto'>Ask our Experts</ShimmerButton>

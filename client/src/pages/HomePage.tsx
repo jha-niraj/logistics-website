@@ -113,7 +113,7 @@ const HomePage = () => {
         comments: '',
         agreeToTerms: false
     });
-    const [ isSubmitting, setIsSubmitting ] = useState<Boolean>(false); 
+    const [isSubmitting, setIsSubmitting] = useState<Boolean>(false);
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -125,7 +125,7 @@ const HomePage = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:3002/api/v1/contactform', {
+            const response = await fetch('http://localhost:3002/api/v1/feedbackform', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -181,6 +181,10 @@ const HomePage = () => {
     const goToSlide = (index: number) => {
         setCurrentSlide(index);
     };
+    const copyNumber = () => {
+        navigator.clipboard.writeText("1-346-202-1929");
+        toast.success("Phone Number Copied")
+    }
 
     return (
         <section className="py-24">
@@ -215,7 +219,7 @@ const HomePage = () => {
                                     <p className="text-xl text-center">
                                         We provide timely pick up of shipments from the doorstep of customers
                                     </p>
-                                    <ShimmerButton className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                                    <ShimmerButton onClick={copyNumber} className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
                                         Call us Now
                                     </ShimmerButton>
                                 </div>

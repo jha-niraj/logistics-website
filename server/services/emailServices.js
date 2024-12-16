@@ -1,13 +1,13 @@
 const transporter = require('../config/emailConfig');
 
-const sendContactFormEmail = async (formData) => {
+const sendContactFormEmail = async(formData) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: 'singhkratik799@gmail.com',
-            subject: 'New Contact Form Submission',
+            to: 'imports@ushwt.com',
+            subject: 'Feedback Form Submission',
             html: `
-                <h2>New Contact Form Submission</h2>
+                <h2>New Feedback Form</h2>
                 <p><strong>Name:</strong> ${formData.name}</p>
                 <p><strong>Email:</strong> ${formData.email}</p>
                 <p><strong>Comments:</strong> ${formData.comments}</p>
@@ -21,12 +21,33 @@ const sendContactFormEmail = async (formData) => {
         throw new Error('Failed to send email');
     }
 };
-const sendRateRequestMessage = async (formData) => {
-
+const sendEmailFromContactPage = async(formData) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "singhkratik799@gmail.com",
+            to: 'nirajjha3110@gmail.com',
+            subject: 'Contact Form Submission',
+            html: `
+                <h1>Contact Form Submission</h1>
+                <p><strong>Name:</strong> ${formData.name}</p>
+                <p><strong>Email:</strong> ${formData.email}</p>
+                <h3><strong>Subject:</strong> ${formData.subject}</h3>
+                <h1><strong>Message:</strong> ${formData.message}</h1>
+            `
+        };
+
+        const info = await transporter.sendMail(mailOptions);
+        return { success: true, messageId: info.messageId };
+    } catch (error) {
+        console.error('Email sending failed:', error);
+        throw new Error('Failed to send email');
+    }
+};
+const sendRateRequestMessage = async (formData) => {
+    try {
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: "imports@ushwt.com",
             subject: "Rate Request Inquiery",
             html: `
                 <!DOCTYPE html>
@@ -153,5 +174,6 @@ const sendRateRequestMessage = async (formData) => {
 
 module.exports = {
     sendContactFormEmail,
+    sendEmailFromContactPage,
     sendRateRequestMessage
 };

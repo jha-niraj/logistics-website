@@ -3,6 +3,7 @@ import ShimmerButton from "@/components/ui/shimmer-button";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import aboutUsImage from "./Images/aboutusPage.png";
+import { useNavigate } from "react-router-dom";
 
 interface ValueProps {
     title: string;
@@ -17,6 +18,8 @@ const ValueCard: React.FC<ValueProps> = ({ title, content }) => (
 )
 
 const AboutUs = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="min-h-screen py-24">
             <motion.div
@@ -150,6 +153,7 @@ const AboutUs = () => {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.5, delay: 0.4 }}
+                                    onClick={() => navigate("/contactus")}
                                 >
                                     <RainbowButton className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
                                         Contact Us

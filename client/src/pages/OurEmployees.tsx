@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
-import employee1 from "@/assets/ourEmployer-1.jpeg";
+import employee2 from "@/assets/employer3.jpeg";
 
 type ProductCardProps = {
     name: string;
@@ -27,8 +27,8 @@ const EmployeeCard: React.FC<ProductCardProps> = ({
                 />
                 <h2 className="text-xl font-semibold text-center">{name}</h2>
                 <p className="text-sm text-gray-300 text-center my-4">{role}</p>
-                <div className="flex justify-between items-center mt-4">
-                    <span className="text-lg font-semibold">{email}</span>
+                <div className="flex justify-center items-center mt-4 w-full">
+                    <span className="text-lg text-center font-semibold">{email}</span>
                 </div>
             </div>
         </div>
@@ -43,11 +43,17 @@ const employees = [
         email: "krbaeza@ushwt.com",
     },
     {
-        image: employee1,
-        name: "Mary Angle",
-        role: "Administration",
-        email: "---",
-    }
+        image: employee2,
+        name: "Kratik Singh",
+        role: "IT ASSISTANT EXMIN DEPATMENT",
+        email: "ksingh@ushwt.com"
+    },
+    {
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        name: "Ani Mehta",
+        role: "Export Import Agent",
+        email: "ksingh@ushwt.com"
+    },
 ];
 export default function OurEmployees() {
     return (
