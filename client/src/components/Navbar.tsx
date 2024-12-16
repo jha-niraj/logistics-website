@@ -252,7 +252,7 @@ export default function Navbar() {
                                                 <AvatarFallback><User size={24} /></AvatarFallback>
                                             </Avatar>
                                         </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="end" className="w-36">
+                                        <DropdownMenuContent align="end" className="w-48">
                                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                             <DropdownMenuSeparator />
                                             <Link to="/profile">
