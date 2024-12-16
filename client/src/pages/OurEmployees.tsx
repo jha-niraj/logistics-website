@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
+import employee1 from "@/assets/ourEmployer-1.jpeg";
 import employee2 from "@/assets/employer3.jpeg";
 
 type ProductCardProps = {
@@ -43,6 +44,12 @@ const employees = [
         email: "krbaeza@ushwt.com",
     },
     {
+        image: employee1,
+        name: "George Alcala",
+        role: "Global Consultant",
+        email: "jalcala@ushwt.com",
+    },
+    {
         image: employee2,
         name: "Kratik Singh",
         role: "IT ASSISTANT EXMIN DEPATMENT",
@@ -50,9 +57,9 @@ const employees = [
     },
     {
         image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
-        name: "Ani Mehta",
+        name: "Ami Mehta",
         role: "Export Import Agent",
-        email: "ksingh@ushwt.com"
+        email: "imports@ushwt.com"
     },
 ];
 export default function OurEmployees() {
