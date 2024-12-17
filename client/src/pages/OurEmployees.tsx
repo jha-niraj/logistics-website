@@ -44,12 +44,6 @@ const employees = [
         email: "krbaeza@ushwt.com",
     },
     {
-        image: employee1,
-        name: "George Alcala",
-        role: "Global Consultant",
-        email: "jalcala@ushwt.com",
-    },
-    {
         image: employee2,
         name: "Kratik Singh",
         role: "IT ASSISTANT EXMIN DEPATMENT",
