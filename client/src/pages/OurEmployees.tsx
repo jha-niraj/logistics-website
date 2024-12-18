@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
-import employee1 from "@/assets/ourEmployer-1.jpeg";
 import employee2 from "@/assets/employer3.jpeg";
 
 type ProductCardProps = {
