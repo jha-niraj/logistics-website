@@ -1,6 +1,5 @@
 import { Mail, MessageCircle } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
-import carousalImage5 from "./Images/bulk_cargo_import.jpg";
 import carousal1 from "./Images/carousal1.webp";
 import carousal2 from "./Images/carousal2.webp";
 import { useEffect, useState } from "react";
