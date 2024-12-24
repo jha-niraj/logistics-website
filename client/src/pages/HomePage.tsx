@@ -1,11 +1,8 @@
-import { Clock, Building2, ChevronRight, Mail, MessageCircle } from 'lucide-react';
+import { Mail, MessageCircle } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
-import carousalImage1 from "./Images/carousalImage1.png";
-import carousalImage2 from "./Images/carousalImage2.png";
-import carousalImage3 from "./Images/carousalImage3.png";
-import carousalImage4 from "./Images/bulk_cargo_export.jpg";
 import carousalImage5 from "./Images/bulk_cargo_import.jpg";
-import carousalImage6 from "./Images/vehicle.jpeg";
+import carousal1 from "./Images/carousal1.webp";
+import carousal2 from "./Images/carousal2.webp";
 import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -18,7 +15,6 @@ import service1 from "./Images/warehouseService.png";
 import service2 from "./Images/Air freightService.png";
 import service3 from "./Images/cargoService.png";
 import service4 from "./Images/trainService.jpeg";
-import service5 from "./Images/vehicleService.jpeg";
 import service6 from "./Images/waterFreightService.png";
 import service7 from "./Images/wineService.jpeg";
 import toast, { Toaster } from "react-hot-toast";
@@ -52,20 +48,20 @@ const faqData = [
         answer: "To get a quote, you can fill out the 'Get a Quote' form on our website or contact our customer support team for a personalized estimate based on your shipping needs."
     }
 ];
-const experiences = [
-    {
-        icon: Clock,
-        title: "7 Years of Experience",
-        description: "Our team brings over two decades of expertise in the field, ensuring top-tier solutions for your business.",
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
-    },
-    {
-        icon: Building2,
-        title: "22 Years of Company Creation",
-        description: "Since the company's founding, we have been delivering high-quality services to businesses worldwide.",
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
-    }
-];
+// const experiences = [
+//     {
+//         icon: Clock,
+//         title: "7 Years of Experience",
+//         description: "Our team brings over two decades of expertise in the field, ensuring top-tier solutions for your business.",
+//         image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
+//     },
+//     {
+//         icon: Building2,
+//         title: "22 Years of Company Creation",
+//         description: "Since the company's founding, we have been delivering high-quality services to businesses worldwide.",
+//         image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
+//     }
+// ];
 const services = [
     {
         title: "AIR FREIGHT SERVICES",
@@ -95,7 +91,7 @@ const services = [
     {
         title: "LUXURY VEHICLE EXPORT & IMPORT",
         description: "We provide premium logistics for the export and import of high-value vehicles. We ensure your luxury cars are handled with utmost care, reaching their destination safely and on time.",
-        image: service5
+        image: carousal1
     },
     {
         title: "WAREHOUSING SERVICES",
@@ -165,12 +161,11 @@ const HomePage = () => {
         blur: { scale: 1 }
     };
     const slides = [
-        carousalImage1,
-        carousalImage2,
-        carousalImage3,
-        carousalImage4,
+        carousal1,
+        carousal2,
+        service6,
+        service4,
         carousalImage5,
-        carousalImage6
     ];
     useEffect(() => {
         const timer = setInterval(() => {
@@ -249,39 +244,45 @@ const HomePage = () => {
                 className="w-full mx-auto mt-20 mb-16"
             >
                 <div className="flex flex-col items-center gap-6">
-                    <h1 className="text-4xl font-semibold">About Us</h1>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-6">
+                        Welcome to U.S. Handle Worldwide Trade, LLC.
+                    </h2>
                     <div className="flex flex-col md:flex-row w-full gap-10">
                         <motion.img
                             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80"
                             alt="Logistics Operations"
-                            className="rounded-lg shadow-xl w-full md:w-1/2 h-[400px] object-cover"
+                            className="rounded-lg shadow-xl w-full md:w-1/2 h-[400px] flex items-center my-auto justify-center object-cover"
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
                         />
                         <div className="md:w-1/2">
-                            <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-6">
-                                U.S. Handle Worldwide Trade, LLC
-                            </h2>
                             <div className="space-y-4 text-gray-600 text-center leading-relaxed">
                                 <p>
-                                    U.S. Handle Worldwide Trade, LLC serves as your trusted partner for seamless import and export logistics,
-                                    empowering your supply chain with innovative solutions tailored to meet the demands of today's competitive global market.
+                                    Founded on July 1, 2018, U.S. Handle Worldwide Trade, LLC is a woman-owned business driven by a vision of growth,
+                                    innovation, and excellence. Located in Houston, TX—a global trade hub—we specialize in providing seamless and
+                                    comprehensive logistics solutions designed to meet the demands of today's fast-paced and competitive marketplace.
                                 </p>
                                 <p>
-                                    We operate as a cohesive network of independent transportation and logistics experts, alongside key affiliated
-                                    service providers, ensuring a robust array of air, ocean, ground, and value-added services on a global scale.
+                                    In an ever-changing world, partnering with a knowledgeable and reliable logistics provider is essential. At U.S.
+                                    Handle Worldwide Trade, we pride ourselves on our industry expertise and commitment to offering tailored,
+                                    cost-effective solutions. We offer a wide range of services, including air, ocean, ground, railroad, truck,
+                                    and value-added logistics, as well as warehousing and project cargo handling.
                                 </p>
                                 <p>
-                                    Our integrated approach combines state-of-the-art information systems with comprehensive supply chain management,
-                                    guaranteeing swift, secure, and efficient delivery of your goods worldwide. Whether you are entering new markets
-                                    or expanding your reach, our solutions provide cost-effective and punctual deliveries that enhance your operational flexibility.
+                                    Our team of experienced professionals works alongside trusted service providers to ensure your supply chain operates
+                                    smoothly, from the initial stages to final delivery. We invest in state-of-the-art technology, optimized processes,
+                                    and the development of our people to provide the highest quality service possible.
+                                </p>
+                                <p>
+                                    Join us in building a long-term partnership where reliability, flexibility, and innovation come together to drive success
+                                    in your global logistics needs.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </motion.div>
-            <motion.div
+            {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -319,7 +320,7 @@ const HomePage = () => {
                         ))
                     }
                 </div>
-            </motion.div>
+            </motion.div> */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -342,28 +343,14 @@ const HomePage = () => {
                         </h2>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
                             <motion.p
-                                className="font-semibold text-center text-xl text-blue-600"
+                                className="font-medium text-center text-lg max-w-56 rounded-2xl mx-auto shadow-lg text-black dark:text-white"
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
+                                whileHover={{ scale: 1.05 }}
                             >
                                 Karla Regina Baeza
                             </motion.p>
-                            <p className="text-center">
-                                For more than 25 years, I've been working in the field of International Trade,
-                                and every day I open something new in this field. It makes me love my job, and
-                                that is why I am always happy to create new projects for my clients.
-                            </p>
-                            <p className="text-center">
-                                Since the very first day that I got my license from the Department of the Treasury
-                                to act as a Licensed U.S. Customhouse Broker, I knew that I would start a long
-                                journey holding this very prestigious title. In 2018, this dream came true.
-                            </p>
-                            <p className="text-center">
-                                Today, I manage my own company at a different level, working with designers,
-                                developers, importers, exporters, trucking companies, warehouses, distribution
-                                centers, buyers, sellers, etc. I help them grow their business.
-                            </p>
                             <motion.div
                                 className="flex items-center justify-center gap-2 mt-6"
                                 whileHover={{ scale: 1.05 }}
@@ -373,6 +360,24 @@ const HomePage = () => {
                                     krbaeza@ushwt.com
                                 </a>
                             </motion.div>
+                            <p className="text-center">
+                                As the founder and CEO, I bring over 25 years of experience in International Trade, and I'm passionate
+                                about helping businesses navigate the complexities of the global marketplace. Since launching my company
+                                in 2018, we’ve focused on delivering innovative, reliable, and cost-effective logistics solutions that
+                                empower our clients to grow and succeed.
+                            </p>
+                            <p className="text-center">
+                                We understand that every business is unique, which is why we offer personalized services designed to meet
+                                your specific needs. Whether you're managing complex project cargo, expanding into new markets, or streamlining
+                                your supply chain, we're here to support your success every step of the way.
+                            </p>
+                            <p className="text-center">
+                                Our team is committed to excellence, constantly investing in technology, processes, and training to ensure that
+                                we deliver the best results. I look forward to working with you and helping your business achieve its goals.
+                            </p>
+                            <p className='text-center'>
+                                Thank you for choosing U.S. Handle Worldwide Trade.
+                            </p>
                         </div>
                     </AnimatedSection>
                 </div>
@@ -419,19 +424,19 @@ const HomePage = () => {
                                                     transition={{ duration: 0.3 }}
                                                 />
                                                 <div className="p-6">
-                                                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                                                    <h3 className="text-lg text-center font-semibold text-gray-900 mb-3">
                                                         {service.title}
                                                     </h3>
-                                                    <p className="text-gray-600 mb-4">
+                                                    <p className="text-gray-600 text-center mb-4">
                                                         {service.description}
                                                     </p>
-                                                    <motion.button
+                                                    {/* <motion.button
                                                         className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
                                                         whileHover={{ x: 10 }}
                                                     >
                                                         Read More
                                                         <ChevronRight className="w-4 h-4" />
-                                                    </motion.button>
+                                                    </motion.button> */}
                                                 </div>
                                             </motion.div>
                                         ))
