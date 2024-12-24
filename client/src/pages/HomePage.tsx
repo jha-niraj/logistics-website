@@ -164,8 +164,6 @@ const HomePage = () => {
         carousal1,
         carousal2,
         service6,
-        service4,
-        carousalImage5,
     ];
     useEffect(() => {
         const timer = setInterval(() => {
