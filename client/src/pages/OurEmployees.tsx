@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
 import employee2 from "@/assets/employer3.jpeg";
+import employee4 from "@/assets/employer4.jpeg";
 
 type ProductCardProps = {
     name: string;
@@ -39,7 +40,13 @@ const employees = [
     {
         image: ceoImage,
         name: "Karla Regina Baeza",
-        role: "CEO",
+        role: "Managing Director",
+        email: "krbaeza@ushwt.com",
+    },
+    {
+        image: employee4,
+        name: "Abraham Munoz",
+        role: "Project Manager",
         email: "krbaeza@ushwt.com",
     },
     {
@@ -53,6 +60,18 @@ const employees = [
         name: "Ami Mehta",
         role: "Export Import Agent",
         email: "imports@ushwt.com"
+    },
+    {
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        name: "Susana Rico",
+        role: "Accounting",
+        email: "accounting@ushwt.com"
+    },
+    {
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        name: "Anita Delgado",
+        role: "Human Resources",
+        email: "hr@accounting.com"
     },
 ];
 export default function OurEmployees() {

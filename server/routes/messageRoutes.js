@@ -5,10 +5,10 @@ const userMiddleware = require("../middlewares/userMiddleware");
 
 const submitFeedbackForm = async (req, res) => {
     try {
-        const { name, email, comments } = req.body;
+        const { name, rating, comments } = req.body;
 
         // Validate input
-        if (!name || !email || !comments) {
+        if (!name || !rating || !comments) {
             return res.status(400).json({
                 success: false,
                 message: 'Please provide all required fields'
@@ -16,7 +16,7 @@ const submitFeedbackForm = async (req, res) => {
         }
 
         // Send email
-        await sendContactFormEmail({ name, email, comments });
+        await sendContactFormEmail({ name, rating, comments });
 
         res.status(200).json({
             success: true,

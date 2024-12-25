@@ -5,11 +5,12 @@ const sendContactFormEmail = async(formData) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: 'singhkratik799@gmail.com',
+            // to: "nirajjha3110@gmail.com",
             subject: 'Feedback Form Submission',
             html: `
                 <h2>New Feedback Form</h2>
                 <p><strong>Name:</strong> ${formData.name}</p>
-                <p><strong>Email:</strong> ${formData.email}</p>
+                <p><strong>Rating:</strong> ${formData.rating}</p>
                 <p><strong>Comments:</strong> ${formData.comments}</p>
             `
         };

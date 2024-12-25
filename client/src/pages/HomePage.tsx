@@ -1,4 +1,4 @@
-import { Mail, MessageCircle } from 'lucide-react';
+import { Mail, MessageCircle, Star } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
 import carousal1 from "./Images/carousal1.webp";
 import carousal2 from "./Images/carousal2.webp";
@@ -99,17 +99,39 @@ const services = [
     },
 ];
 
+interface FormData {
+    name: string;
+    rating: number;
+    comments: string;
+    agreeToTerms: boolean;
+}
 const HomePage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     //@ts-ignore
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: '',
-        email: '',
+        rating: 5,
         comments: '',
         agreeToTerms: false
     });
-    const [isSubmitting, setIsSubmitting] = useState<Boolean>(false);
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [isHovering, setIsHovering] = useState<number | null>(null);
+    const getRatingLabel = (rating: number) => {
+        if (rating <= 2) return "Poor";
+        if (rating <= 4) return "Fair";
+        if (rating <= 6) return "Good";
+        if (rating <= 8) return "Very Good";
+        return "Excellent";
+    };
+    const getEmoji = (rating: number) => {
+        if (rating <= 2) return "😔";
+        if (rating <= 4) return "😐";
+        if (rating <= 6) return "🙂";
+        if (rating <= 8) return "😊";
+        return "🤩";
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -128,7 +150,7 @@ const HomePage = () => {
                 },
                 body: JSON.stringify({
                     name: formData.name,
-                    email: formData.email,
+                    rating: formData.rating,
                     comments: formData.comments
                 })
             });
@@ -140,7 +162,7 @@ const HomePage = () => {
                 // Reset form
                 setFormData({
                     name: '',
-                    email: '',
+                    rating: 5,
                     comments: '',
                     agreeToTerms: false
                 });
@@ -253,7 +275,7 @@ const HomePage = () => {
                             transition={{ duration: 0.3 }}
                         />
                         <div className="md:w-1/2">
-                            <div className="space-y-4 text-gray-600 text-center leading-relaxed">
+                            <div className="space-y-4 text-gray-600 text-left leading-relaxed">
                                 <p>
                                     Founded on July 1, 2018, U.S. Handle Worldwide Trade, LLC is a woman-owned business driven by a vision of growth,
                                     innovation, and excellence. Located in Houston, TX—a global trade hub—we specialize in providing seamless and
@@ -357,22 +379,22 @@ const HomePage = () => {
                                     krbaeza@ushwt.com
                                 </a>
                             </motion.div>
-                            <p className="text-center">
+                            <p className="text-left">
                                 As the founder and CEO, I bring over 25 years of experience in International Trade, and I'm passionate
                                 about helping businesses navigate the complexities of the global marketplace. Since launching my company
                                 in 2018, we’ve focused on delivering innovative, reliable, and cost-effective logistics solutions that
                                 empower our clients to grow and succeed.
                             </p>
-                            <p className="text-center">
+                            <p className="text-left">
                                 We understand that every business is unique, which is why we offer personalized services designed to meet
                                 your specific needs. Whether you're managing complex project cargo, expanding into new markets, or streamlining
                                 your supply chain, we're here to support your success every step of the way.
                             </p>
-                            <p className="text-center">
+                            <p className="text-left">
                                 Our team is committed to excellence, constantly investing in technology, processes, and training to ensure that
                                 we deliver the best results. I look forward to working with you and helping your business achieve its goals.
                             </p>
-                            <p className='text-center'>
+                            <p className='text-left'>
                                 Thank you for choosing U.S. Handle Worldwide Trade.
                             </p>
                         </div>
@@ -421,10 +443,10 @@ const HomePage = () => {
                                                     transition={{ duration: 0.3 }}
                                                 />
                                                 <div className="p-6">
-                                                    <h3 className="text-lg text-center font-semibold text-gray-900 mb-3">
+                                                    <h3 className="text-lg text-left font-semibold text-gray-900 mb-3">
                                                         {service.title}
                                                     </h3>
-                                                    <p className="text-gray-600 text-center mb-4">
+                                                    <p className="text-gray-600 text-left mb-4">
                                                         {service.description}
                                                     </p>
                                                     {/* <motion.button
@@ -460,16 +482,18 @@ const HomePage = () => {
                     </div>
                     <div className="w-full lg:w-2/3">
                         <Accordion type="multiple" className="gap-3 rounded-lg flex flex-col">
-                            {faqData.map((faq) => (
-                                <AccordionItem key={faq.id} value={faq.id} className="rounded-lg">
-                                    <AccordionTrigger className="text-left px-6">
-                                        {faq.question}
-                                    </AccordionTrigger>
-                                    <AccordionContent className="px-6">
-                                        {faq.answer}
-                                    </AccordionContent>
-                                </AccordionItem>
-                            ))}
+                            {
+                                faqData.map((faq) => (
+                                    <AccordionItem key={faq.id} value={faq.id} className="rounded-lg">
+                                        <AccordionTrigger className="text-left px-6">
+                                            {faq.question}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="px-6">
+                                            {faq.answer}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))
+                            }
                         </Accordion>
                     </div>
                 </div>
@@ -501,7 +525,7 @@ const HomePage = () => {
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             />
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                                 Email
                             </label>
@@ -516,6 +540,57 @@ const HomePage = () => {
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
+                        </div> */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-medium text-gray-700">
+                                Rate Your Experience
+                            </label>
+
+                            <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+                                <div className="text-center mb-4">
+                                    <span className="text-4xl">
+                                        {getEmoji(isHovering ?? formData.rating)}
+                                    </span>
+                                    <p className="text-lg font-medium mt-2 text-gray-800">
+                                        {getRatingLabel(isHovering ?? formData.rating)}
+                                    </p>
+                                </div>
+
+                                <div className="flex justify-center items-center space-x-2">
+                                    {
+                                        [...Array(10)].map((_, index) => {
+                                            const ratingValue = index + 1;
+                                            return (
+                                                <motion.button
+                                                    key={index}
+                                                    type="button"
+                                                    whileHover={{ scale: 1.1 }}
+                                                    whileTap={{ scale: 0.9 }}
+                                                    className={`relative group`}
+                                                    onMouseEnter={() => setIsHovering(ratingValue)}
+                                                    onMouseLeave={() => setIsHovering(null)}
+                                                    onClick={() => setFormData({ ...formData, rating: ratingValue })}
+                                                >
+                                                    <Star
+                                                        className={`w-8 h-8 ${(isHovering !== null
+                                                            ? ratingValue <= isHovering
+                                                            : ratingValue <= formData.rating)
+                                                            ? 'fill-yellow-400 text-yellow-400'
+                                                            : 'fill-gray-200 text-gray-300'
+                                                            } transition-colors`}
+                                                    />
+
+                                                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 
+                                                    opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 
+                                                    text-white text-xs py-1 px-2 rounded whitespace-nowrap">
+                                                        Rate {ratingValue}/10
+                                                    </div>
+                                                </motion.button>
+                                            );
+                                        })
+                                    }
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="comments" className="block text-sm font-medium text-gray-700 mb-1">
