@@ -49,7 +49,7 @@ const MarketEntry = () => {
 
                         {/* Right side - Content */}
                         <div className="p-8">
-                            <div className="flex flex-col items-center justify-center gap-1 mb-6">
+                            <div className="flex flex-col items-start justify-center gap-1 mb-6">
                                 <h1 className="text-3xl text-center font-semibold text-gray-900">
                                     Market Entry
                                 </h1>
