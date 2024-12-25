@@ -1,4 +1,7 @@
-import { RocketIcon } from "lucide-react";
+import marketEntry from "../Images/marketentry.jpeg";
+import marketEntry2 from "../Images/marketentry2.jpg";
+import marketEntry3 from "../Images/marketentry3.jpg";
+import marketEntry4 from "../Images/marketentry4.jpeg";
 
 const services = [
     {
@@ -42,12 +45,28 @@ const MarketEntry = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="grid md:grid-cols-2 gap-8">
-                        {/* Left side - Rocket Animation */}
-                        <div className="bg-sky-100 p-8 flex items-center justify-center">
-                            <RocketIcon />
+                        <div className="flex flex-col gap-8 bg-sky-100 p-8">
+                            <img 
+                                src={marketEntry}
+                                alt="Market Entry"
+                                className="w-full rounded-2xl transition-all duration-300 hover:scale-105"
+                            />
+                            <img 
+                                src={marketEntry2}
+                                alt="Market Entry"
+                                className="w-full rounded-2xl transition-all duration-300 hover:scale-105"
+                            />
+                            <img 
+                                src={marketEntry3}
+                                alt="Market Entry"
+                                className="w-full rounded-2xl transition-all duration-300 hover:scale-105"
+                            />
+                            <img 
+                                src={marketEntry4}
+                                alt="Market Entry"
+                                className="w-full rounded-2xl transition-all duration-300 hover:scale-105"
+                            />
                         </div>
-
-                        {/* Right side - Content */}
                         <div className="p-8">
                             <div className="flex flex-col items-start justify-center gap-1 mb-6">
                                 <h1 className="text-3xl text-center font-semibold text-gray-900">
