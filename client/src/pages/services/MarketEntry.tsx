@@ -3,22 +3,22 @@ import { RocketIcon } from "lucide-react";
 const services = [
     {
         title: 'Product Development',
-        description: 'We assist in refining and developing products to meet market-specific requirements and consumer preferences. This includes optimizing features, functionality, and quality to align with target market expectations.'
+        description: "We assist in refining and tailoring products to meet market-specific needs, consumer preferences, and local regulations. Our approach focuses on optimizing product features, functionality, and quality to ensure it aligns with the target market's expectations."
     },
     {
-        title: 'Placement',
-        description: 'We help determine the most effective distribution channels for your product, ensuring it reaches the right audience in the most efficient manner. This involves selecting retail partners, online platforms, and logistics solutions.'
+        title: 'Placement and Distribution',
+        description: 'Identifying the right distribution channels is key to reaching your audience. We help businesses choose the most effective retail partners, online platforms, and logistics solutions to ensure efficient and timely product delivery.'
     },
     {
-        title: 'Branding',
-        description: 'We work on creating and adapting brand identities that resonate with local consumers. This includes developing brand messaging, visual elements, and promotional strategies tailored to the new market.'
+        title: 'Branding and Market Positioning',
+        description: 'A strong brand presence is essential for market success. We work on adapting and creating brand identities that resonate with local consumers, including brand messaging, visual elements, and promotional strategies tailored to the cultural context of the target market.'
     },
     {
-        title: 'Labeling',
-        description: 'We ensure that product labeling meets local regulations and appeals to consumer preferences. This includes translating labels, adjusting design elements, and complying with regulatory requirements.'
+        title: 'Labeling and Compliance',
+        description: 'Product labeling must meet local legal requirements while appealing to consumers. We assist with translation, design adjustments, and regulatory compliance, ensuring your products are correctly presented and legally certified.'
     },
     {
-        title: 'Adaptation',
+        title: 'Cultutal and Regulatory Adaptation',
         description: 'We customize products to fit the cultural and regulatory standards of the target market. This may involve modifying product features, packaging, and marketing materials to align with local tastes and compliance norms.'
     }
 ];
@@ -49,12 +49,18 @@ const MarketEntry = () => {
 
                         {/* Right side - Content */}
                         <div className="p-8">
-                            <h1 className="text-4xl text-center sm:text-left font-bold text-gray-900 mb-6">
-                                Market Entry
-                            </h1>
+                            <div className="flex flex-col items-center justify-center gap-1 mb-6">
+                                <h1 className="text-3xl text-center font-semibold text-gray-900">
+                                    Market Entry
+                                </h1>
+                                <p className="text-sm font-medium">
+                                    Comprehensive Market Entry Strategies for Global Success
+                                </p>
+                            </div>
                             <p className="text-gray-700 text-center sm:text-left mb-8 leading-relaxed">
-                                We offer comprehensive market entry strategies to help businesses navigate the
-                                complexities of launching products in new markets.
+                                We specialize in guiding businesses through the intricacies of entering new markets,
+                                ensuring a seamless and successful product launch. Our services are designed to
+                                address every aspect of market entry, from product development to localization and distribution.
                             </p>
                             <div className="mb-8 text-center sm:text-left">
                                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">
