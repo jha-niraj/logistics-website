@@ -15,6 +15,7 @@ import ShinyButton from "./ui/shiny-button";
 import { useUser } from "@/Context/UserContext";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import toast, { Toaster } from "react-hot-toast";
+import powerOfAttorney from "@/assets/Corporate KYC (4).pdf";
 
 const services = [
     {
@@ -55,13 +56,25 @@ const tools = [
         title: "Fees Calculator",
         path: "https://dilas.ca/brokerage-fees-calculator/"
     }
-
+]
+const references = [
+    {
+        title: "Commercial",
+        path: "https://dilas.ca/commercial-shipments/"
+    },
+    {
+        title: "Fees Calculator",
+        path: "https://dilas.ca/brokerage-fees-calculator/"
+    },
+    {
+        title: "Power of Attorney",
+        path: ""
+    }
 ]
 const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/aboutus" },
     { name: "Partners", href: "/partners" },
-    { name: "Contact", href: "/contactus" },
     { name: "Our Employees", href: "/ouremployees" }
 ]
 
@@ -72,8 +85,10 @@ export default function Navbar() {
     const [activePath, setActivePath] = useState(pathname);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isToolsOpen, setIsToolsOpen] = useState(false);
+    const [isReferenceOpen, setIsReferenceOpen] = useState<boolean>(false);
     const servicesRef = useRef<HTMLDivElement>(null);
     const toolsRef = useRef<HTMLDivElement>(null);
+    const referenceRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
     const { user, logout } = useUser();
@@ -153,7 +168,6 @@ export default function Navbar() {
                                     </Button>
                                 ))
                             }
-                            {/* Tools Dropdown */}
                             <div
                                 ref={toolsRef}
                                 className="relative"
@@ -191,7 +205,12 @@ export default function Navbar() {
                                     )
                                 }
                             </div>
-                            {/* Services Dropdown */}
+                            <Link
+                                to="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                            >
+                                Brand
+                            </Link>
                             <div
                                 ref={servicesRef}
                                 className="relative"
@@ -228,14 +247,74 @@ export default function Navbar() {
                                     )
                                 }
                             </div>
+                            <div
+                                ref={referenceRef}
+                                className="relative"
+                                onMouseEnter={() => setIsReferenceOpen(true)}
+                                onMouseLeave={() => setIsReferenceOpen(false)}
+                            >
+                                <Button
+                                    variant="ghost"
+                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
+                                        ${isReferenceOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
+                                >
+                                    References
+                                </Button>
+                                {
+                                    isReferenceOpen && (
+                                        <div
+                                            className="absolute top-full left-2/3 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-1"
+                                            onMouseLeave={() => setIsReferenceOpen(false)}
+                                        >
+                                            {
+                                                references.map((reference, index) => (
+                                                    <div key={reference.path}>
+                                                        {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                        {
+                                                            reference.path === "" ?
+                                                                <Link
+                                                                    to={powerOfAttorney}
+                                                                    target="_blank"
+                                                                    download={true}
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                >
+                                                                    {reference.title}
+                                                                </Link>
+                                                                :
+                                                                <Link
+                                                                    to={reference.path}
+                                                                    target="_blank"
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                >
+                                                                    {reference.title}
+                                                                </Link>
+                                                        }
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    )
+                                }
+                            </div>
                             <div>
                                 {
                                     user?.token ?
-                                        <Link to="/kycverification">KYC</Link>
+                                        <Link
+                                            to="/kycverification"
+                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                        >
+                                            KYC
+                                        </Link>
                                         :
                                         ""
                                 }
                             </div>
+                            <Link
+                                to="/contactus"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                            >
+                                Contact Us
+                            </Link>
                         </div>
                         <div className="flex gap-2 items-center justify-end">
                             <Link
@@ -298,6 +377,12 @@ export default function Navbar() {
                                             </Button>
                                         ))
                                     }
+                                    <Link
+                                        to="#"
+                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                    >
+                                        Brand
+                                    </Link>
                                     <Accordion type="single" collapsible className="w-full">
                                         <AccordionItem value="services">
                                             <AccordionTrigger className="text-left px-4">
@@ -305,18 +390,22 @@ export default function Navbar() {
                                             </AccordionTrigger>
                                             <AccordionContent>
                                                 <div className="space-y-2 ml-4">
-                                                    {services.map((service) => (
-                                                        <div
-                                                            key={service.path}
-                                                            onClick={() => {
-                                                                handleNavigation(service.path)
-                                                                setIsSheetOpen(false)
-                                                            }}
-                                                            className="block py-2 cursor-pointer text-sm text-muted-foreground hover:text-primary transition-colors"
-                                                        >
-                                                            {service.title}
-                                                        </div>
-                                                    ))}
+                                                    {
+                                                        services.map((service, index) => (
+                                                            <div 
+                                                                key={service.path}
+                                                                onClick={() => setIsSheetOpen(false)}
+                                                            >
+                                                                {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                                <Link
+                                                                    to={service.path}
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                >
+                                                                    {service.title}
+                                                                </Link>
+                                                            </div>
+                                                        ))
+                                                    }
                                                 </div>
                                             </AccordionContent>
                                         </AccordionItem>
@@ -327,16 +416,57 @@ export default function Navbar() {
                                             <AccordionContent>
                                                 <div className="space-y-2 ml-4">
                                                     {
-                                                        tools.map((tool) => (
-                                                            <div
+                                                        tools.map((tool, index) => (
+                                                            <div 
                                                                 key={tool.path}
-                                                                onClick={() => {
-                                                                    handleNavigation(tool.path)
-                                                                    setIsSheetOpen(false)
-                                                                }}
-                                                                className="block cursor-pointer py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                                                onClick={() => setIsSheetOpen(false)}
                                                             >
-                                                                {tool.title}
+                                                                {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                                <Link
+                                                                    to={tool.path}
+                                                                    target="_blank"
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                >
+                                                                    {tool.title}
+                                                                </Link>
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                        <AccordionItem value="references">
+                                            <AccordionTrigger className="text-left px-4">
+                                                References
+                                            </AccordionTrigger>
+                                            <AccordionContent>
+                                                <div className="space-y-2 ml-4">
+                                                    {
+                                                        references.map((reference, index) => (
+                                                            <div 
+                                                                key={reference.path}
+                                                                onClick={() => setIsSheetOpen(false)}
+                                                            >
+                                                                {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                                {
+                                                                    reference.path === "" ?
+                                                                        <Link
+                                                                            to={powerOfAttorney}
+                                                                            target="_blank"
+                                                                            download={true}
+                                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                        >
+                                                                            {reference.title}
+                                                                        </Link>
+                                                                        :
+                                                                        <Link
+                                                                            to={reference.path}
+                                                                            target="_blank"
+                                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                        >
+                                                                            {reference.title}
+                                                                        </Link>
+                                                                }
                                                             </div>
                                                         ))
                                                     }
@@ -351,26 +481,28 @@ export default function Navbar() {
                                         >
                                             <RainbowButton>Rate Request Form</RainbowButton>
                                         </Link>
-                                        {
-                                            user?.token ?
-                                                <div>
-                                                    <div className="flex w-full justify-between">
-                                                        <Avatar>
-                                                            <AvatarFallback><User size={24} /></AvatarFallback>
-                                                        </Avatar>
-                                                        <Link to="/profile">Profile</Link>
+                                        <div className="border-t">
+                                            {
+                                                user?.token ?
+                                                    <div className="flex w-full justify-between p-2">
+                                                        <div className="flex items-center justify-center gap-2 hover:bg-sky-200 hover:rounded-2xl">
+                                                            <Avatar>
+                                                                <AvatarFallback><User size={24} /></AvatarFallback>
+                                                            </Avatar>
+                                                            <Link to="/profile">Profile</Link>
+                                                        </div>
+                                                        <ShimmerButton onClick={() => logout()}>Log Out</ShimmerButton>
                                                     </div>
-                                                    <ShimmerButton onClick={() => logout()}>Log Out</ShimmerButton>
-                                                </div>
-                                                :
-                                                <Link to="/signin">
-                                                    <ShimmerButton
-                                                        className="w-full"
-                                                    >
-                                                        Login
-                                                    </ShimmerButton>
-                                                </Link>
-                                        }
+                                                    :
+                                                    <Link to="/signin">
+                                                        <ShimmerButton
+                                                            className="w-full"
+                                                        >
+                                                            Login
+                                                        </ShimmerButton>
+                                                    </Link>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </SheetContent>

@@ -9,6 +9,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
+import headerSectionImage1 from "./Images/airFrieght-mainsection.jpg";
+import headerSectionImage2 from "./Images/airFreight2-mainsection.jpeg";
+import headerSectionImage3 from "./Images/warehouse-mainsection.jpeg";
 import ceoimage from "./Images/ceoImage.jpg";
 import service1 from "./Images/warehouseService.png";
 import service2 from "./Images/Air freightService.png";
@@ -182,6 +185,9 @@ const HomePage = () => {
         blur: { scale: 1 }
     };
     const slides = [
+        headerSectionImage1,
+        headerSectionImage2, 
+        headerSectionImage3,
         carousal1,
         carousal2,
         service6,
@@ -275,7 +281,7 @@ const HomePage = () => {
                             transition={{ duration: 0.3 }}
                         />
                         <div className="md:w-1/2">
-                            <div className="space-y-4 text-gray-600 text-left leading-relaxed">
+                            <div className="space-y-4 text-gray-600 text-center leading-relaxed">
                                 <p>
                                     Founded on July 1, 2018, U.S. Handle Worldwide Trade, LLC is a woman-owned business driven by a vision of growth,
                                     innovation, and excellence. Located in Houston, TX—a global trade hub—we specialize in providing seamless and
@@ -301,45 +307,6 @@ const HomePage = () => {
                     </div>
                 </div>
             </motion.div>
-            {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-full mx-auto mt-20 mb-16"
-            >
-                <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-12">
-                    Our Experience
-                </h2>
-                <div className="flex flex-col md:flex-row justify-center gap-8">
-                    {
-                        experiences.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                whileHover={{ scale: 1.05 }}
-                                className="bg-white rounded-xl shadow-lg overflow-hidden max-w-sm w-full"
-                            >
-                                <motion.img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="w-full h-48 object-cover"
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                                <div className="p-6">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <item.icon className="w-8 h-8 text-blue-600" />
-                                        <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                                    </div>
-                                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                                </div>
-                            </motion.div>
-                        ))
-                    }
-                </div>
-            </motion.div> */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -358,7 +325,7 @@ const HomePage = () => {
                     </AnimatedSection>
                     <AnimatedSection className="lg:w-1/2">
                         <h2 className="text-3xl lg:text-4xl text-center font-bold text-gray-900 mb-6">
-                            Message from the CEO
+                            Message from the MD
                         </h2>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
                             <motion.p
@@ -379,22 +346,22 @@ const HomePage = () => {
                                     krbaeza@ushwt.com
                                 </a>
                             </motion.div>
-                            <p className="text-left">
+                            <p className="text-center">
                                 As the founder and CEO, I bring over 25 years of experience in International Trade, and I'm passionate
                                 about helping businesses navigate the complexities of the global marketplace. Since launching my company
                                 in 2018, we’ve focused on delivering innovative, reliable, and cost-effective logistics solutions that
                                 empower our clients to grow and succeed.
                             </p>
-                            <p className="text-left">
+                            <p className="text-center">
                                 We understand that every business is unique, which is why we offer personalized services designed to meet
                                 your specific needs. Whether you're managing complex project cargo, expanding into new markets, or streamlining
                                 your supply chain, we're here to support your success every step of the way.
                             </p>
-                            <p className="text-left">
+                            <p className="text-center">
                                 Our team is committed to excellence, constantly investing in technology, processes, and training to ensure that
                                 we deliver the best results. I look forward to working with you and helping your business achieve its goals.
                             </p>
-                            <p className='text-left'>
+                            <p className='text-center'>
                                 Thank you for choosing U.S. Handle Worldwide Trade.
                             </p>
                         </div>

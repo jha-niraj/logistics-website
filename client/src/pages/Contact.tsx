@@ -62,7 +62,7 @@ const ContactUs = () => {
     };
 
     return (
-        <section className="w-full flex flex-col gap-4 sm:gap-0 py-20">
+        <section className="w-full flex flex-col gap-4 sm:gap-0 py-24 sm:py-32 md:py-20">
             <Toaster />
             <div className="min-h-screen ">
                 <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -132,7 +132,7 @@ const ContactUs = () => {
                             </div>
                         </section>
                         <div className="p-8">
-                            <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in touch</h2>
+                            <h2 className="text-3xl text-center md:text-left font-bold text-gray-800 mb-8">Get in touch</h2>
                             {
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid md:grid-cols-2 gap-6">

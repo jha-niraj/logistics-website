@@ -24,7 +24,7 @@ const EmployeeCard: React.FC<ProductCardProps> = ({
                 <img
                     src={image}
                     alt={name}
-                    className="w-full h-48 rounded-full object-contain mb-4"
+                    className="w-full h-48 scale-105 rounded-full object-contain mb-4"
                 />
                 <h2 className="text-xl font-semibold text-center">{name}</h2>
                 <p className="text-sm text-gray-300 text-center my-4">{role}</p>
@@ -47,7 +47,7 @@ const employees = [
         image: employee4,
         name: "Abraham Munoz",
         role: "Project Manager",
-        email: "krbaeza@ushwt.com",
+        email: "amunoz@ushwt.com",
     },
     {
         image: employee2,
@@ -101,7 +101,7 @@ export default function OurEmployees() {
                 {/* Team Members Grid */}
                 <section className=" bg-gray-50 min-h-screen">
                     <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
-                        Our Employees
+                        Our Team
                     </h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
                         {
