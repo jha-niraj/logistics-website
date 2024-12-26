@@ -278,7 +278,7 @@ export default function Navbar() {
                                                                         to={powerOfAttorney}
                                                                         target="_blank"
                                                                         download={true}
-                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-black hover:text-white transition-colors"
                                                                     >
                                                                         {reference.title}
                                                                     </Link>
@@ -286,7 +286,7 @@ export default function Navbar() {
                                                                     <Link
                                                                         to={reference.path}
                                                                         target="_blank"
-                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-black hover:text-white transition-colors"
                                                                     >
                                                                         {reference.title}
                                                                     </Link>
