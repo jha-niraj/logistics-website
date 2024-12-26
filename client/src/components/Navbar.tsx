@@ -15,7 +15,7 @@ import ShinyButton from "./ui/shiny-button";
 import { useUser } from "@/Context/UserContext";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import toast, { Toaster } from "react-hot-toast";
-import powerOfAttorney from "@/assets/Corporate KYC (4).pdf";
+import powerOfAttorney from "@/assets/powerofattorney.pdf";
 
 const services = [
     {
@@ -161,7 +161,7 @@ export default function Navbar() {
                                     <Button
                                         key={item.name}
                                         variant="ghost"
-                                        className={`text-sm font-medium transition-colors hover:text-primary rounded-full`}
+                                        className={`text-sm font-medium transition-colors hover:text-white hover:bg-black rounded-full`}
                                         onClick={() => handleNavigation(item.href)}
                                     >
                                         {item.name}
@@ -176,7 +176,7 @@ export default function Navbar() {
                             >
                                 <Button
                                     variant="ghost"
-                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
+                                    className={`text-sm font-medium transition-colors hover:text-primary hover:bg-black hover:text-white rounded-full 
                                         ${isToolsOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
                                     Tools
@@ -207,7 +207,7 @@ export default function Navbar() {
                             </div>
                             <Link
                                 to="#"
-                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                className="block px-4 py-2 text-sm text-gray-700 bg-white rounded-lg hover:bg-black hover:text-white transition-colors"
                             >
                                 Brand
                             </Link>
@@ -219,7 +219,7 @@ export default function Navbar() {
                             >
                                 <Button
                                     variant="ghost"
-                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
+                                    className={`text-sm font-medium transition-colors hover:text-primary hover:bg-black hover:text-white rounded-full 
                                         ${isServicesOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
                                     Services
@@ -255,7 +255,7 @@ export default function Navbar() {
                             >
                                 <Button
                                     variant="ghost"
-                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full 
+                                    className={`text-sm font-medium transition-colors hover:text-primary hover:bg-black hover:text-white rounded-full 
                                         ${isReferenceOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
                                     References
@@ -266,32 +266,35 @@ export default function Navbar() {
                                             className="absolute top-full left-2/3 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-1"
                                             onMouseLeave={() => setIsReferenceOpen(false)}
                                         >
-                                            {
-                                                references.map((reference, index) => (
-                                                    <div key={reference.path}>
-                                                        {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
-                                                        {
-                                                            reference.path === "" ?
-                                                                <Link
-                                                                    to={powerOfAttorney}
-                                                                    target="_blank"
-                                                                    download={true}
-                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                                                                >
-                                                                    {reference.title}
-                                                                </Link>
-                                                                :
-                                                                <Link
-                                                                    to={reference.path}
-                                                                    target="_blank"
-                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
-                                                                >
-                                                                    {reference.title}
-                                                                </Link>
-                                                        }
-                                                    </div>
-                                                ))
-                                            }
+                                            <h1 className="p-2 text-md font-medium">Canadian Services</h1>
+                                            <div className="pl-10">
+                                                {
+                                                    references.map((reference, index) => (
+                                                        <div key={reference.path}>
+                                                            {index > 0 && <div className="h-px bg-gray-200 mx-2" />}
+                                                            {
+                                                                reference.path === "" ?
+                                                                    <Link
+                                                                        to={powerOfAttorney}
+                                                                        target="_blank"
+                                                                        download={true}
+                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                    >
+                                                                        {reference.title}
+                                                                    </Link>
+                                                                    :
+                                                                    <Link
+                                                                        to={reference.path}
+                                                                        target="_blank"
+                                                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                                                    >
+                                                                        {reference.title}
+                                                                    </Link>
+                                                            }
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
                                         </div>
                                     )
                                 }
@@ -301,7 +304,7 @@ export default function Navbar() {
                                     user?.token ?
                                         <Link
                                             to="/kycverification"
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                            className="block px-4 py-2 text-sm text-gray-700 bg-white rounded-lg hover:bg-black hover:text-white transition-colors"
                                         >
                                             KYC
                                         </Link>
@@ -311,7 +314,7 @@ export default function Navbar() {
                             </div>
                             <Link
                                 to="/contactus"
-                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors"
+                                className="block px-4 py-2 text-sm text-gray-700 bg-white rounded-lg hover:bg-black hover:text-white transition-colors"
                             >
                                 Contact Us
                             </Link>
@@ -392,7 +395,7 @@ export default function Navbar() {
                                                 <div className="space-y-2 ml-4">
                                                     {
                                                         services.map((service, index) => (
-                                                            <div 
+                                                            <div
                                                                 key={service.path}
                                                                 onClick={() => setIsSheetOpen(false)}
                                                             >
@@ -417,7 +420,7 @@ export default function Navbar() {
                                                 <div className="space-y-2 ml-4">
                                                     {
                                                         tools.map((tool, index) => (
-                                                            <div 
+                                                            <div
                                                                 key={tool.path}
                                                                 onClick={() => setIsSheetOpen(false)}
                                                             >
@@ -443,7 +446,7 @@ export default function Navbar() {
                                                 <div className="space-y-2 ml-4">
                                                     {
                                                         references.map((reference, index) => (
-                                                            <div 
+                                                            <div
                                                                 key={reference.path}
                                                                 onClick={() => setIsSheetOpen(false)}
                                                             >
