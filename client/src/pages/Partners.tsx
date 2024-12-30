@@ -1,11 +1,11 @@
-import mapImage from "./Images/map.jpg";
+import worldMap from "./Images/worldMap.jpg";
 
 const Partners = () => {
     return (
-        <section className="max-w-7xl mx-auto py-16">
+        <section className="flex items-center justify-center py-24 h-screen max-w-7xl mx-auto">
             <img 
-                src={mapImage}
-                className="xl:relative xl:left-24 scale-110 sm:scale-100"
+                src={worldMap}
+                className="border-black shadow-md rounded-2xl h-full w-full hover:shadow-2xl transition-all duration-300"
             />
         </section>
     )
