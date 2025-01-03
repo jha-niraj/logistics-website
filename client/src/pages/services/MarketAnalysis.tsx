@@ -39,7 +39,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ title, description }) =
     );
 };
 
-const MarketEntry = () => {
+const MarketAnalysis = () => {
     return (
         <div className="min-h-screen bg-gray-50 py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,4 +123,4 @@ const MarketEntry = () => {
     )
 }
 
-export default MarketEntry;
+export default MarketAnalysis;

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
 import employee2 from "@/assets/employer3.jpeg";
 import employee4 from "@/assets/employer4.jpeg";
+import { Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type ProductCardProps = {
     name: string;
@@ -28,9 +30,10 @@ const EmployeeCard: React.FC<ProductCardProps> = ({
                 />
                 <h2 className="text-xl font-semibold text-center">{name}</h2>
                 <p className="text-sm text-gray-300 text-center my-4">{role}</p>
-                <div className="flex justify-center items-center mt-4 w-full">
+                <Link to={`mailto:${email}`} className="flex justify-center items-center gap-1 mt-4 w-full hover:text-sky-500 hover:scale-105 transition-all duration-300">
+                    <Mail size={24} className="mr-2" />
                     <span className="text-lg text-center font-semibold">{email}</span>
-                </div>
+                </Link>
             </div>
         </div>
     );
@@ -90,9 +93,8 @@ export default function OurEmployees() {
                             Meet Our Exceptional Team
                         </h1>
                         <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
-                            We're a diverse group of passionate individuals working together to create
-                            innovative solutions. Hover over our cards to learn more about each team
-                            member.
+                            We're a diverse and passionate team working together to deliver innovative solutions. 
+                            Hover over our cards to learn more about each of our team members and the unique contributions they bring to the table.
                         </p>
                     </div>
                     <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(45%_45%_at_50%_50%,#f3e8ff_0,transparent_100%)]" />

@@ -54,19 +54,26 @@ const AboutUs = () => {
                             </CardHeader>
                             <CardContent className="prose dark:prose-invert flex flex-col gap-4">
                                 <p>
-                                    Welcome to S.S. Nordic Worldwide Trade LLC, a distinguished leader in global freight management.
+                                    At U.S. Handle Worldwide Trade, LLC, we're here to simplify your global logistics and freight management needs. 
+                                    Whether you're just starting to explore international markets or looking to optimize your existing operations, 
+                                    we provide reliable, cost-effective solutions that help you get your goods where they need to go—on time and on budget.                                  </p>
+                                <p>
+                                    Our team of experienced logistics professionals works alongside a trusted network of service providers to offer a full 
+                                    range of air, ocean, and ground transportation options, as well as value-added services. We understand the complexities 
+                                    of global trade, and our goal is to make it easier for you to navigate the process with confidence.
                                 </p>
                                 <p>
-                                    S.S. Nordic Worldwide Trade LLC serves as your trusted partner for maritime import and export logistics, empowering your supply chain with innovative solutions tailored to meet the demands of today&apos;s competitive global market. We operate as a valuable network of independent representatives and logistics experts, delivering key offshore service products, providing a unique bridge for moving people and other related services on a global scale.
+                                    We combine modern information systems with a practical, hands-on approach to supply chain management, ensuring that your 
+                                    shipments are managed efficiently and securely from start to finish. Whether it's trade agreements, taxes, duties, or licensing, 
+                                    our International Freight Consultants are here to provide the guidance and support you need to make informed decisions.
                                 </p>
                                 <p>
-                                    Our integrated approach combines state-of-the-art technology systems with comprehensive supply chain management, guaranteeing swift, secure, and efficient delivery of your global activities. Whether you are starting new markets or expanding your reach, our solutions provide cost-effective and practical solutions that enhance your operational flexibility.
+                                    At U.S. Handle Worldwide Trade, LLC, we're committed to building long-term, meaningful relationships with our clients. 
+                                    We focus on delivering consistent results and providing personalized service that adapts to your specific needs. Our success 
+                                    is tied to your success, and we look forward to working together to help your business grow.
                                 </p>
                                 <p>
-                                    As International Freight Consultants, we offer strategic guidance on trade agreements, duties, taxes, and licensing requirements, facilitating informed decisions in international transactions. Committed to your success, we envision expanding our market presence and building enduring partnerships across the globe.
-                                </p>
-                                <p>
-                                    Partner with S.S. Nordic Worldwide Trade LLC and elevate your logistics experience. Discover how our expertise and dedication can streamline your global operations and drive growth.
+                                    Partner with us today and experience how our straightforward, dependable logistics solutions can make a real difference for your business.
                                 </p>
                             </CardContent>
                         </Card>
@@ -76,7 +83,10 @@ const AboutUs = () => {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-gray-800">
-                                    Our vision is to establish ourselves as a leader in the shipping and logistics industry by achieving global standards in professionalism of service, and thereby becoming an indispensable partner to our clients in their business growth and wealth creation.
+                                    Our vision is to be a leading force in the shipping and logistics industry, empowering women entrepreneurs and businesses with innovative, professional, 
+                                    and reliable logistics solutions. As a women-owned business, we are committed to breaking barriers and setting new standards of excellence, fostering 
+                                    long-term partnerships that drive growth, prosperity, and success for our clients. We aim to inspire and support women in business, creating opportunities 
+                                    for empowerment, leadership, and lasting impact in the global marketplace.                                
                                 </p>
                             </CardContent>
                         </Card>
@@ -86,7 +96,10 @@ const AboutUs = () => {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-gray-800">
-                                    Our mission is to deliver best of class services and solutions to all shipping and logistics requirements of our clients while offering exceptional value for their money. Which should be accomplished in the marketplace. Our aim is not only to provide exceptional customer satisfaction but also to establish long-term mutually beneficial relationships with our clients so that based on it we be considered as a valuable building up tool for parties. We will strive to operate responsibly both for our clients and for our employees. To others we shall will be to provide careers and satisfactory work environment and experience.
+                                    As a women-owned business, our mission is to provide reliable and effective shipping and logistics solutions that meet the real needs of our clients. 
+                                    We focus on delivering value through practical, tailored services while building long-term relationships based on trust and mutual success. We're 
+                                    committed to running our business with integrity, treating our employees with respect, and fostering a work environment where everyone can grow and 
+                                    thrive. Our goal is to empower women in business and contribute to the success of our clients, employees, and community.
                                 </p>
                             </CardContent>
                         </Card>
@@ -97,23 +110,34 @@ const AboutUs = () => {
                             <CardContent className="space-y-6">
                                 <ValueCard
                                     title="Strong Relationships"
-                                    content="We believe relationships are at the heart of all success and we understand how important it is to develop strong relationships across all areas of our business, from our employees to our customers, our partners and all our associates."
+                                    content="We believe that strong relationships are the foundation of all success. From our employees to our customers, partners, and associates,
+                                            we prioritize building and nurturing meaningful connections across every area of our business. These relationships are the key to 
+                                            delivering exceptional service and fostering long-term success."
                                 />
                                 <ValueCard
                                     title="Agility and Responsiveness"
-                                    content="We believe relationships are at the heart of all success and we understand how important it is to develop strong relationships across all areas of our business, from our employees to our customers, our partners and all our associates."
+                                    content="We understand the importance of being agile and responsive in an ever-changing global marketplace. Our ability to quickly adapt to your 
+                                            needs and offer flexible solutions ensures that we remain a valuable partner in your logistics operations. No matter the challenge, we 
+                                            respond with speed and precision."
                                 />
                                 <ValueCard
                                     title="Trust"
-                                    content="Trust is everything in any business relationship and we know how difficult it is to earn trust of our clients and more importantly, to maintain and cherish it for a very long time. As a small entity system we take a humble building up of understanding between our customers respect."
+                                    content="Trust is the cornerstone of every successful business relationship, and we know how vital it is to earn and maintain that trust. 
+                                            As a small, nimble organization, we take pride in building deep, respectful connections with our clients and partners, and we are 
+                                            committed to nurturing those relationships for the long term."
                                 />
                                 <ValueCard
                                     title="Key to Success"
-                                    content="We manage consolidation of all small trade moves and we fully equipped to handle special projects, oversized cargo and hazardous consignments. We have dry technology operation capability to a location towards and the cost effectiveness to deliver on our promise efficiently. As a one-stop shop with complete Logistics Solution, Customs and team with all operational cargo movement has freight forwarding and customs clearance. We have the right answers, to the right place, at the right time everything on to offer timely clearance and execution of services on time every time."
+                                    content="We specialize in consolidating small trade moves and handling special projects, oversized cargo, and hazardous consignments. 
+                                            Our advanced dry technology and efficient operations ensure that we deliver on our promises, providing cost-effective, timely solutions. 
+                                            As a one-stop logistics provider, we handle everything from freight forwarding to customs clearance, guaranteeing that your shipments 
+                                            arrive on time, every time."
                                 />
                                 <ValueCard
                                     title="Quality Policy"
-                                    content="We serve with utmost care! At S.S Nordic Pty Ltd LLC 'Nordic Worldwide Trade, LLC.' it is dedicated to provide services to exceed the expectations of our valued customers. S.S. Nordic Worldwide Trade, LLC. is also committed to 'continual improvement' in its Service Quality through a system focus on People, Process, Systems & Leadership."
+                                    content="We are committed to exceeding the expectations of our valued customers. Our dedication to continual improvement drives us to focus 
+                                            on enhancing our people, processes, systems, and leadership. Through these efforts, we aim to deliver services of the highest quality, 
+                                            ensuring that every client receives the best possible experience."
                                 />
                             </CardContent>
                         </Card>
@@ -125,7 +149,68 @@ const AboutUs = () => {
                     </CardHeader>
                     <CardContent>
                         <p className="text-gray-800">
-                            Our strategy integrates cutting-edge information systems with comprehensive supply chain management to ensure fast, secure, and efficient deliveries across the globe. Whether you're expanding your business or entering new markets, we offer innovative logistics solutions tailored to your needs.
+                            At U.S. Handle Worldwide Trade, LLC, we combine cutting-edge information systems with a comprehensive supply chain management strategy to deliver fast,
+                            secure, and efficient logistics solutions worldwide. Whether you’re expanding your business or entering new markets, our innovative approach ensures 
+                            your operations are streamlined, adaptable, and tailored to your specific needs. Trust us to optimize your logistics and keep you ahead in today's global marketplace.
+                        </p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Our Values</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-800">
+                            We believe that strong relationships are the foundation of all success. From our employees to our customers, partners, and associates, we prioritize building and 
+                            nurturing meaningful connections across every area of our business. These relationships are the key to delivering exceptional service and fostering long-term success.
+                        </p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Agility and Responsiveness</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-800">
+                            We understand the importance of being agile and responsive in an ever-changing global marketplace. Our ability to quickly adapt to your 
+                            needs and offer flexible solutions ensures that we remain a valuable partner in your logistics operations. No matter the challenge, 
+                            we respond with speed and precision.
+                        </p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Trust</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-800">
+                            Trust is the cornerstone of every successful business relationship, and we know how vital it is to earn and maintain that trust. 
+                            As a small, nimble organization, we take pride in building deep, respectful connections with our clients and partners, and we 
+                            are committed to nurturing those relationships for the long term.    
+                        </p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Key to success</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-800">
+                            We specialize in consolidating small trade moves and handling special projects, oversized cargo, and hazardous consignments. 
+                            Our advanced dry technology and efficient operations ensure that we deliver on our promises, providing cost-effective, timely solutions. 
+                            As a one-stop logistics provider, we handle everything from freight forwarding to customs clearance, guaranteeing that your shipments arrive on time, every time.
+                        </p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Quality Policy</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-800">
+                            We are committed to exceeding the expectations of our valued customers. Our dedication to continual improvement drives us to focus on enhancing our people, 
+                            processes, systems, and leadership. Through these efforts, we aim to deliver services of the highest quality, ensuring that every client receives the best 
+                            possible experience.
                         </p>
                     </CardContent>
                 </Card>
@@ -135,7 +220,10 @@ const AboutUs = () => {
                     </CardHeader>
                     <CardContent>
                         <p className="text-gray-800">
-                            As your trusted International Freight Consultants, we provide expert advice on trade agreements, taxes, duties, and licensing. We empower you to make informed decisions that enhance your operational efficiency in global markets.
+                            As your trusted International Freight Consultants, we offer expert guidance on trade agreements, taxes, duties, and licensing. 
+                            Our in-depth knowledge of global trade regulations empowers you to make informed decisions that optimize your operational 
+                            efficiency and ensure smooth market access. Let us help you navigate the complexities of international trade, so you can 
+                            focus on scaling your business worldwide with confidence                        
                         </p>
                     </CardContent>
                 </Card>
@@ -146,7 +234,10 @@ const AboutUs = () => {
                     <CardContent>
                         <div className="bg-white rounded-xl transition-shadow">
                             <p className="text-gray-700 leading-relaxed mb-8">
-                                Partner with U.S. Handle Worldwide Trade, LLC to elevate your logistics operations and achieve seamless international trade. Our expertise in freight management and dedication to excellence make us the perfect partner for your business growth.
+                                Elevate your logistics operations by partnering with U.S. Handle Worldwide Trade, LLC. Our deep expertise in freight management, 
+                                combined with our commitment to excellence, ensures seamless international trade solutions tailored to your business needs. 
+                                Whether you're looking to streamline your supply chain or expand your global reach, we are the ideal partner to support your 
+                                growth and success in today's dynamic marketplace.                            
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <motion.div
@@ -156,7 +247,7 @@ const AboutUs = () => {
                                     onClick={() => navigate("/contactus")}
                                 >
                                     <RainbowButton className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                        Contact Us
+                                        Let's grow together
                                     </RainbowButton>
                                 </motion.div>
                                 <motion.div

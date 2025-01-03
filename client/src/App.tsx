@@ -10,7 +10,7 @@ import Nvocc from './pages/services/Nvocc';
 import CustomBrokerage from './pages/services/CustomBrokerage';
 import BreakBulk from './pages/services/Breakbulk';
 import BillLanding from './pages/services/BillLanding';
-import MarketEntry from './pages/services/MarketEntry';
+import MarketAnalysis from './pages/services/MarketAnalysis';
 import ClientBriefForm from './components/ClientBriefForm';
 import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
@@ -41,7 +41,7 @@ const App = () => {
 					<Route path='services/custom-brokerage' element={<CustomBrokerage />} />
 					<Route path='services/break-bulk-project-cargo' element={<BreakBulk />} />
 					<Route path='services/bill-of-landing' element={<BillLanding />} />
-					<Route path='services/market-entry' element={<MarketEntry />} />
+					<Route path='services/market-analysis' element={<MarketAnalysis />} />
 					<Route path='clientbriefform' element={<ClientBriefForm />} />
 				</Route>
 			</Routes>

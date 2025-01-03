@@ -39,8 +39,8 @@ const services = [
         path: "/services/bill-of-landing"
     },
     {
-        title: "Market Entry",
-        path: "/services/market-entry"
+        title: "Market Analysis",
+        path: "/services/market-analysis"
     }
 ];
 const tools = [
