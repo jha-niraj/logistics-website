@@ -74,7 +74,6 @@ const references = [
 const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/aboutus" },
-    { name: "Partners", href: "/partners" },
     { name: "Our Employees", href: "/ouremployees" }
 ]
 

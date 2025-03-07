@@ -55,7 +55,7 @@ const employees = [
     {
         image: employee2,
         name: "Kratik Singh",
-        role: "IT ASSISTANT EXMIN DEPATMENT",
+        role: "IT Assistant, EX/IN Department",
         email: "ksingh@ushwt.com"
     },
     {
