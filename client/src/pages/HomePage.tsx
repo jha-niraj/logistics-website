@@ -1,17 +1,17 @@
 import { Mail, MessageCircle, Star } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
 import carousal1 from "./Images/carousal1.webp";
-import carousal2 from "./Images/carousal2.webp";
-import { useEffect, useState } from "react";
+// import carousal2 from "./Images/carousal2.webp";
+import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
-import headerSectionImage1 from "./Images/airFrieght-mainsection.jpg";
-import headerSectionImage2 from "./Images/airFreight2-mainsection.jpeg";
-import headerSectionImage3 from "./Images/warehouse-mainsection.jpeg";
+// import headerSectionImage1 from "./Images/airFrieght-mainsection.jpg";
+// import headerSectionImage2 from "./Images/airFreight2-mainsection.jpeg";
+// import headerSectionImage3 from "./Images/warehouse-mainsection.jpeg";
 import ceoimage from "./Images/ceoImage.jpg";
 import service1 from "./Images/warehouseService.png";
 import service2 from "./Images/Air freightService.png";
@@ -22,6 +22,7 @@ import service7 from "./Images/wineService.jpeg";
 import toast, { Toaster } from "react-hot-toast";
 import SocialIcons from '@/components/SocialIcons';
 import { BASE_URL } from '@/config';
+import HeroSection from '@/components/HeroSection';
 
 const faqData = [
     {
@@ -109,7 +110,7 @@ interface FormData {
     agreeToTerms: boolean;
 }
 const HomePage = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+    // const [currentSlide, setCurrentSlide] = useState(0);
     //@ts-ignore
     const [currentIndex, setCurrentIndex] = useState(0);
     const [formData, setFormData] = useState<FormData>({
@@ -184,83 +185,36 @@ const HomePage = () => {
         focus: { scale: 1.02 },
         blur: { scale: 1 }
     };
-    const slides = [
-        headerSectionImage1,
-        headerSectionImage2, 
-        headerSectionImage3,
-        carousal1,
-        carousal2,
-        service6,
-    ];
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-        }, 3000);
+    // const slides = [
+    //     headerSectionImage1,
+    //     headerSectionImage2, 
+    //     headerSectionImage3,
+    //     carousal1,
+    //     carousal2,
+    //     service6,
+    // ];
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    //     }, 3000);
 
-        return () => clearInterval(timer);
-    }, []);
-    const goToSlide = (index: number) => {
-        setCurrentSlide(index);
-    };
-    const copyNumber = () => {
-        navigator.clipboard.writeText("1-346-202-1929");
-        toast.success("Phone Number Copied")
-    }
+    //     return () => clearInterval(timer);
+    // }, []);
+    // const goToSlide = (index: number) => {
+    //     setCurrentSlide(index);
+    // };
+    // const copyNumber = () => {
+    //     navigator.clipboard.writeText("1-346-202-1929");
+    //     toast.success("Phone Number Copied")
+    // }
 
     return (
         <section className="py-24">
             <Toaster />
             <SocialIcons />
-            <motion.div
-                className="w-full mx-auto mb-16 relative h-[80vh] rounded-lg overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-            >
-                <div
-                    className="flex transition-transform duration-500 ease-out h-full -z-10"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                    {
-                        slides.map((slide, index) => (
-                            <div
-                                key={index}
-                                className="w-full h-full flex-shrink-0 relative"
-                            >
-                                <img
-                                    src={slide}
-                                    alt={`Slide ${index + 1}`}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-black/20"></div>
-                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                                    <h2 className="text-4xl font-bold mb-4 text-center">
-                                        We Provide International Air Cargo Services
-                                    </h2>
-                                    <p className="text-xl text-center">
-                                        We provide timely pick up of shipments from the doorstep of customers
-                                    </p>
-                                    <ShimmerButton onClick={copyNumber} className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                                        Call us Now
-                                    </ShimmerButton>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {
-                        slides.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-colors duration-300 ${currentSlide === index ? 'bg-white' : 'bg-white/50'
-                                    }`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))
-                    }
-                </div>
+
+            <motion.div className='-mt-5'>
+                <HeroSection/>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -276,7 +230,7 @@ const HomePage = () => {
                         <motion.img
                             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80"
                             alt="Logistics Operations"
-                            className="rounded-lg shadow-xl w-full md:w-1/2 h-[400px] flex items-center my-auto justify-center object-cover"
+                            className="rounded-lg shadow-xl w-full md:w-1/2 lg:w-1/2 h-[400px] flex items-center my-auto justify-center object-cover"
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
                         />
@@ -313,15 +267,15 @@ const HomePage = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="max-w-7xl mx-auto mt-20 mb-16"
             >
-                <div className="flex flex-col lg:flex-row items-center gap-12">
-                    <AnimatedSection className="lg:w-1/2">
-                        <motion.img
-                            src={ceoimage}
-                            alt="CEO Portrait"
-                            className="rounded-lg shadow-xl w-full h-[500px] object-cover"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                        />
+                  <div className="flex flex-col lg:flex-row items-center gap-12">
+                            <AnimatedSection className="lg:w-1/2">
+                                <motion.img
+                                    src={ceoimage}
+                                    alt="CEO Portrait"
+                                    className="rounded-lg shadow-xl w-full h-[500px] object-cover"
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.3 }}
+                                />
                     </AnimatedSection>
                     <AnimatedSection className="lg:w-1/2">
                         <h2 className="text-3xl lg:text-4xl text-center font-bold text-gray-900 mb-6">

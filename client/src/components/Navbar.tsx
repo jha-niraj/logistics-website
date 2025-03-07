@@ -206,10 +206,11 @@ export default function Navbar() {
                                 }
                             </div>
                             <Link
-                                to="#"
+                                to="https://www.itbholdingsllc.com/"
+                                target="_blank"
                                 className="block px-4 py-2 text-sm text-gray-700 bg-white rounded-lg hover:bg-black hover:text-white transition-colors"
                             >
-                                Brand
+                                    FDA
                             </Link>
                             <div
                                 ref={servicesRef}
