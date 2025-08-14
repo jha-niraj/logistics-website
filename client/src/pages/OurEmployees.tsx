@@ -60,8 +60,20 @@ const employees = [
     },
     {
         image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
-        name: "Ami Mehta",
-        role: "Export Import Agent",
+        name: "Ana Jaro",
+        role: "Administration",
+        email: "imports@ushwt.com"
+    },
+    {
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        name: "Juan Carlos Martinez",
+        role: "Warehouse",
+        email: "imports@ushwt.com"
+    },
+    {
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        name: "Joel Scott Cano",
+        role: "Sales",
         email: "imports@ushwt.com"
     },
     {

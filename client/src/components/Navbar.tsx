@@ -43,29 +43,21 @@ const services = [
         path: "/services/market-analysis"
     }
 ];
-const tools = [
-    {
-        title: "Commercial",
-        path: "https://dilas.ca/commercial-shipments/"
-    },
-    {
-        title: "Personal",
-        path: "https://dilas.ca/personal-agreement/"
-    },
-    {
-        title: "Fees Calculator",
-        path: "https://dilas.ca/brokerage-fees-calculator/"
-    }
-]
+// const tools = [
+//     {
+//         title: "Commercial",
+//         path: "https://dilas.ca/commercial-shipments/"
+//     },
+//     {
+//         title: "Personal",
+//         path: "https://dilas.ca/personal-agreement/"
+//     },
+//     {
+//         title: "Fees Calculator",
+//         path: "https://dilas.ca/brokerage-fees-calculator/"
+//     }
+// ]
 const references = [
-    {
-        title: "Commercial",
-        path: "https://dilas.ca/commercial-shipments/"
-    },
-    {
-        title: "Fees Calculator",
-        path: "https://dilas.ca/brokerage-fees-calculator/"
-    },
     {
         title: "Power of Attorney",
         path: ""
@@ -83,7 +75,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activePath, setActivePath] = useState(pathname);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
-    const [isToolsOpen, setIsToolsOpen] = useState(false);
+    // const [isToolsOpen, setIsToolsOpen] = useState(false);
     const [isReferenceOpen, setIsReferenceOpen] = useState<boolean>(false);
     const servicesRef = useRef<HTMLDivElement>(null);
     const toolsRef = useRef<HTMLDivElement>(null);
@@ -112,7 +104,7 @@ export default function Navbar() {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (toolsRef.current && !toolsRef.current.contains(event.target as Node)) {
-                setIsToolsOpen(false)
+                // setIsToolsOpen(false)
             }
         }
         document.addEventListener('mousedown', handleClickOutside)
@@ -167,7 +159,7 @@ export default function Navbar() {
                                     </Button>
                                 ))
                             }
-                            <div
+                            {/* <div
                                 ref={toolsRef}
                                 className="relative"
                                 onMouseEnter={() => setIsToolsOpen(true)}
@@ -203,14 +195,14 @@ export default function Navbar() {
                                         </div>
                                     )
                                 }
-                            </div>
-                            <Link
+                            </div> */}
+                            {/* <Link
                                 to="https://www.itbholdingsllc.com/"
                                 target="_blank"
                                 className="block px-4 py-2 text-sm text-gray-700 bg-white rounded-lg hover:bg-black hover:text-white transition-colors"
                             >
                                     FDA
-                            </Link>
+                            </Link> */}
                             <div
                                 ref={servicesRef}
                                 className="relative"
@@ -412,7 +404,7 @@ export default function Navbar() {
                                                 </div>
                                             </AccordionContent>
                                         </AccordionItem>
-                                        <AccordionItem value="tools">
+                                        {/* <AccordionItem value="tools">
                                             <AccordionTrigger className="text-left px-4">
                                                 Tools
                                             </AccordionTrigger>
@@ -437,7 +429,7 @@ export default function Navbar() {
                                                     }
                                                 </div>
                                             </AccordionContent>
-                                        </AccordionItem>
+                                        </AccordionItem> */}
                                         <AccordionItem value="references">
                                             <AccordionTrigger className="text-left px-4">
                                                 References
