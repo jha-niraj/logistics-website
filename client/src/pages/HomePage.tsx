@@ -1,24 +1,13 @@
 import { Mail, MessageCircle, Star } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
-import carousal1 from "./Images/carousal1.webp";
-// import carousal2 from "./Images/carousal2.webp";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
-// import headerSectionImage1 from "./Images/airFrieght-mainsection.jpg";
-// import headerSectionImage2 from "./Images/airFreight2-mainsection.jpeg";
-// import headerSectionImage3 from "./Images/warehouse-mainsection.jpeg";
 import ceoimage from "./Images/ceoImage.jpg";
-import service1 from "./Images/warehouseService.png";
-import service2 from "./Images/Air freightService.png";
-import service3 from "./Images/cargoService.png";
-import service4 from "./Images/trainService.jpeg";
-import service6 from "./Images/waterFreightService.png";
-import service7 from "./Images/wineService.jpeg";
 import toast, { Toaster } from "react-hot-toast";
 import SocialIcons from '@/components/SocialIcons';
 import { BASE_URL } from '@/config';
@@ -65,44 +54,6 @@ const faqData = [
 //         image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
 //     }
 // ];
-const services = [
-    {
-        title: "AIR FREIGHT SERVICES",
-        description: "U.S. Handle Worldwide Trade, LLC. provides professional and comprehensive Air Freight services committed to the safe, reliable and cost-effective delivery of your consignment.",
-        image: service2
-    },
-    {
-        title: "SEA FREIGHT SERVICES",
-        description: "U.S. Handle Worldwide Trade, LLC. provides a highly cost-effective method of transporting a range of large, heavy or normal loads.",
-        image: service6
-    },
-    {
-        title: "TRAIN FREIGHT SERVICES",
-        description: "U.S. Handle Worldwide Trade, LLC. provides a highly cost-effective method of transporting a range of large, heavy or normal loads.",
-        image: service4
-    },
-    {
-        title: "PROJECT CARGO SERVICES",
-        description: "Handling Project Cargo is a specialized job which calls for expertise and experience in this particular field.",
-        image: service3
-    },
-    {
-        title: "ALCOHOL AND WINE EXPORTS",
-        description: "We specialize in exporting alcohol and wine with precision and care. We ensure your products reach global destinations swiftly and safely, meeting all international standards.",
-        image: service7
-    },
-    {
-        title: "LUXURY VEHICLE EXPORT & IMPORT",
-        description: "We provide premium logistics for the export and import of high-value vehicles. We ensure your luxury cars are handled with utmost care, reaching their destination safely and on time.",
-        image: carousal1
-    },
-    {
-        title: "WAREHOUSING SERVICES",
-        description: "Warehousing is an extremely dynamic Logistics service, wherein each client demands a tailor-made solution for his/her business model.",
-        image: service1
-    },
-];
-
 interface FormData {
     name: string;
     rating: number;
@@ -110,9 +61,6 @@ interface FormData {
     agreeToTerms: boolean;
 }
 const HomePage = () => {
-    // const [currentSlide, setCurrentSlide] = useState(0);
-    //@ts-ignore
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [formData, setFormData] = useState<FormData>({
         name: '',
         rating: 5,
@@ -214,13 +162,13 @@ const HomePage = () => {
             <SocialIcons />
 
             <motion.div className='-mt-5'>
-                <HeroSection/>
+                <HeroSection />
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-full mx-auto mt-20 mb-16"
+                className="max-w-6xl mx-auto mt-20 mb-16"
             >
                 <div className="flex flex-col items-center gap-6">
                     <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-6">
@@ -235,7 +183,7 @@ const HomePage = () => {
                             transition={{ duration: 0.3 }}
                         />
                         <div className="md:w-1/2">
-                            <div className="space-y-4 text-gray-600 text-center leading-relaxed">
+                            <div className="space-y-4 text-gray-600 text-left leading-relaxed">
                                 <p>
                                     Founded on July 1, 2018, U.S. Handle Worldwide Trade, LLC is a woman-owned business driven by a vision of growth,
                                     innovation, and excellence. Located in Houston, TX—a global trade hub—we specialize in providing seamless and
@@ -267,15 +215,15 @@ const HomePage = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="max-w-7xl mx-auto mt-20 mb-16"
             >
-                  <div className="flex flex-col lg:flex-row items-center gap-12">
-                            <AnimatedSection className="lg:w-1/2">
-                                <motion.img
-                                    src={ceoimage}
-                                    alt="CEO Portrait"
-                                    className="rounded-lg shadow-xl w-full h-[500px] object-cover"
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
+                <div className="flex flex-col lg:flex-row items-center gap-12">
+                    <AnimatedSection className="lg:w-1/2">
+                        <motion.img
+                            src={ceoimage}
+                            alt="CEO Portrait"
+                            className="rounded-lg shadow-xl w-full h-[500px] object-cover"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                        />
                     </AnimatedSection>
                     <AnimatedSection className="lg:w-1/2">
                         <h2 className="text-3xl lg:text-4xl text-center font-bold text-gray-900 mb-6">
@@ -329,63 +277,6 @@ const HomePage = () => {
                 className="max-w-7xl mx-auto mt-12 mb-16"
             >
                 <iframe className="w-full rounded-2xl" height={600} src="https://www.youtube.com/embed/275HREEbiLg?si=0mqeu5PbPjWuatBx" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="max-w-7xl mx-auto mt-20 mb-16"
-            >
-                <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-12">
-                    Our Services
-                </h2>
-                <div className="">
-                    <div className="flex justify-between items-center gap-8">
-                        <div className="flex-1 overflow-hidden">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-                                    initial={{ x: 1000 }}
-                                    animate={{ x: -currentIndex * 33.33 + '%' }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                >
-                                    {
-                                        services.map((service, index) => (
-                                            <motion.div
-                                                key={index}
-                                                className="w-full bg-white rounded-xl shadow-lg overflow-hidden"
-                                                whileHover={{ y: -10 }}
-                                            >
-                                                <motion.img
-                                                    src={service.image}
-                                                    alt={service.title}
-                                                    className="w-full h-48 object-cover"
-                                                    whileHover={{ scale: 1.1 }}
-                                                    transition={{ duration: 0.3 }}
-                                                />
-                                                <div className="p-6">
-                                                    <h3 className="text-lg text-left font-semibold text-gray-900 mb-3">
-                                                        {service.title}
-                                                    </h3>
-                                                    <p className="text-gray-600 text-left mb-4">
-                                                        {service.description}
-                                                    </p>
-                                                    {/* <motion.button
-                                                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
-                                                        whileHover={{ x: 10 }}
-                                                    >
-                                                        Read More
-                                                        <ChevronRight className="w-4 h-4" />
-                                                    </motion.button> */}
-                                                </div>
-                                            </motion.div>
-                                        ))
-                                    }
-                                </motion.div>
-                            </AnimatePresence>
-                        </div>
-                    </div>
-                </div>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

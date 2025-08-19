@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import ceoImage from "@/pages/Images/ceoImage.jpg";
-import employee2 from "@/assets/employer3.jpeg";
-import employee4 from "@/assets/employer4.jpeg";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -47,13 +45,13 @@ const employees = [
         email: "krbaeza@ushwt.com",
     },
     {
-        image: employee4,
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
         name: "Abraham Munoz",
         role: "Project Manager",
         email: "amunoz@ushwt.com",
     },
     {
-        image: employee2,
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
         name: "Kratik Singh",
         role: "IT Assistant, EX/IN Department",
         email: "ksingh@ushwt.com"

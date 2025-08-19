@@ -84,7 +84,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <p className="font-semibold">Address:</p>
-                                            <p className="text-blue-100">13501 Katy Freeway Houston, TX 77079 USA</p>
+                                            <p className="text-blue-100">1507 Ricefield Dr. | Suite 216 | Houston, TX 77084</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">
@@ -102,7 +102,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <p className="font-semibold">Email:</p>
-                                            <p className="text-blue-100">contact@ushwt.com</p>
+                                            <p className="text-blue-100">krbaeza@ushwt.com</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">

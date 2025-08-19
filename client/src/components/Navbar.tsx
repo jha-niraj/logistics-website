@@ -15,32 +15,39 @@ import ShinyButton from "./ui/shiny-button";
 import { useUser } from "@/Context/UserContext";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import toast, { Toaster } from "react-hot-toast";
-import powerOfAttorney from "@/assets/powerofattorney.pdf";
 
 const services = [
     {
-        title: "Freight Forwarding",
-        path: "/services/freight-forwarding"
-    },
-    {
-        title: "NVOCC",
-        path: "/services/nvocc"
-    },
-    {
-        title: "Custom Brokerage",
-        path: "/services/custom-brokerage"
-    },
-    {
-        title: "Break Bulk & Project Cargo",
-        path: "/services/break-bulk-project-cargo"
-    },
-    {
-        title: "Bill of Landing T&C",
-        path: "/services/bill-of-landing"
-    },
-    {
         title: "Market Analysis",
         path: "/services/market-analysis"
+    },
+    {
+        title: "Air Freight Services",
+        path: "/services/air-freight"
+    },
+    {
+        title: "Sea Freight Services",
+        path: "/services/sea-freight"
+    },
+    {
+        title: "Train Freight Services",
+        path: "/services/train-freight"
+    },
+    {
+        title: "Project Cargo Services",
+        path: "/services/project-cargo"
+    },
+    {
+        title: "Alcohol & Wine Exports",
+        path: "/services/alcohol-wine-exports"
+    },
+    {
+        title: "Luxury Vehicle Export & Import",
+        path: "/services/luxury-vehicle-export-import"
+    },
+    {
+        title: "Warehousing Services",
+        path: "/services/warehousing"
     }
 ];
 // const tools = [
@@ -57,12 +64,7 @@ const services = [
 //         path: "https://dilas.ca/brokerage-fees-calculator/"
 //     }
 // ]
-const references = [
-    {
-        title: "Power of Attorney",
-        path: ""
-    }
-]
+
 const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/aboutus" },
@@ -250,9 +252,9 @@ export default function Navbar() {
                                     className={`text-sm font-medium transition-colors hover:text-primary hover:bg-black hover:text-white rounded-full 
                                         ${isReferenceOpen ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-muted"}`}
                                 >
-                                    References
+                                    Form
                                 </Button>
-                                {
+                                {/* {
                                     isReferenceOpen && (
                                         <div
                                             className="absolute top-full left-2/3 -translate-x-1/2 w-56 bg-white rounded-md shadow-lg py-1"
@@ -289,7 +291,7 @@ export default function Navbar() {
                                             </div>
                                         </div>
                                     )
-                                }
+                                } */}
                             </div>
                             <div>
                                 {
@@ -432,10 +434,10 @@ export default function Navbar() {
                                         </AccordionItem> */}
                                         <AccordionItem value="references">
                                             <AccordionTrigger className="text-left px-4">
-                                                References
+                                                Form
                                             </AccordionTrigger>
                                             <AccordionContent>
-                                                <div className="space-y-2 ml-4">
+                                                {/* <div className="space-y-2 ml-4">
                                                     {
                                                         references.map((reference, index) => (
                                                             <div
@@ -465,7 +467,7 @@ export default function Navbar() {
                                                             </div>
                                                         ))
                                                     }
-                                                </div>
+                                                </div> */}
                                             </AccordionContent>
                                         </AccordionItem>
                                     </Accordion>

@@ -5,12 +5,14 @@ import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
 import Partners from './pages/Partners';
 import ContactUs from './pages/Contact';
-import FrieghtForwarding from './pages/services/FreightForwarding';
-import Nvocc from './pages/services/Nvocc';
-import CustomBrokerage from './pages/services/CustomBrokerage';
-import BreakBulk from './pages/services/Breakbulk';
-import BillLanding from './pages/services/BillLanding';
 import MarketAnalysis from './pages/services/MarketAnalysis';
+import AirFreightServices from './pages/services/AirFreightServices';
+import SeaFreightServices from './pages/services/SeaFreightServices';
+import TrainFreightServices from './pages/services/TrainFreightServices';
+import ProjectCargoServices from './pages/services/ProjectCargoServices';
+import AlcoholWineExports from './pages/services/AlcoholWineExports';
+import LuxuryVehicleExportImport from './pages/services/LuxuryVehicleExportImport';
+import WarehousingServices from './pages/services/WarehousingServices';
 import ClientBriefForm from './components/ClientBriefForm';
 import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
@@ -36,12 +38,14 @@ const App = () => {
 					<Route path='auth' element={<AuthPage />} />
 					<Route path='kycverification' element={<KYCVerification />} />
 					<Route path='profile' element={<Profile />} />
-					<Route path='services/freight-forwarding' element={<FrieghtForwarding />} />
-					<Route path='services/nvocc' element={<Nvocc />} />
-					<Route path='services/custom-brokerage' element={<CustomBrokerage />} />
-					<Route path='services/break-bulk-project-cargo' element={<BreakBulk />} />
-					<Route path='services/bill-of-landing' element={<BillLanding />} />
 					<Route path='services/market-analysis' element={<MarketAnalysis />} />
+					<Route path='services/air-freight' element={<AirFreightServices />} />
+					<Route path='services/sea-freight' element={<SeaFreightServices />} />
+					<Route path='services/train-freight' element={<TrainFreightServices />} />
+					<Route path='services/project-cargo' element={<ProjectCargoServices />} />
+					<Route path='services/alcohol-wine-exports' element={<AlcoholWineExports />} />
+					<Route path='services/luxury-vehicle-export-import' element={<LuxuryVehicleExportImport />} />
+					<Route path='services/warehousing' element={<WarehousingServices />} />
 					<Route path='clientbriefform' element={<ClientBriefForm />} />
 				</Route>
 			</Routes>
