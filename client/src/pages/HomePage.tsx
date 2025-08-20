@@ -1,5 +1,6 @@
 import { Mail, MessageCircle, Star } from 'lucide-react';
 import ShimmerButton from "@/components/ui/shimmer-button";
+// import carousal2 from "./Images/carousal2.webp";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -7,6 +8,9 @@ import { motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
+// import headerSectionImage1 from "./Images/airFrieght-mainsection.jpg";
+// import headerSectionImage2 from "./Images/airFreight2-mainsection.jpeg";
+// import headerSectionImage3 from "./Images/warehouse-mainsection.jpeg";
 import ceoimage from "./Images/ceoImage.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import SocialIcons from '@/components/SocialIcons';
@@ -54,6 +58,7 @@ const faqData = [
 //         image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
 //     }
 // ];
+
 interface FormData {
     name: string;
     rating: number;
@@ -61,6 +66,9 @@ interface FormData {
     agreeToTerms: boolean;
 }
 const HomePage = () => {
+    // const [currentSlide, setCurrentSlide] = useState(0);
+    //@ts-ignore
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [formData, setFormData] = useState<FormData>({
         name: '',
         rating: 5,
@@ -248,24 +256,26 @@ const HomePage = () => {
                                     krbaeza@ushwt.com
                                 </a>
                             </motion.div>
-                            <p className="text-center">
-                                As the founder and CEO, I bring over 25 years of experience in International Trade, and I'm passionate
-                                about helping businesses navigate the complexities of the global marketplace. Since launching my company
-                                in 2018, we’ve focused on delivering innovative, reliable, and cost-effective logistics solutions that
-                                empower our clients to grow and succeed.
-                            </p>
-                            <p className="text-center">
-                                We understand that every business is unique, which is why we offer personalized services designed to meet
-                                your specific needs. Whether you're managing complex project cargo, expanding into new markets, or streamlining
-                                your supply chain, we're here to support your success every step of the way.
-                            </p>
-                            <p className="text-center">
-                                Our team is committed to excellence, constantly investing in technology, processes, and training to ensure that
-                                we deliver the best results. I look forward to working with you and helping your business achieve its goals.
-                            </p>
-                            <p className='text-center'>
-                                Thank you for choosing U.S. Handle Worldwide Trade.
-                            </p>
+                            <div className="space-y-4 text-gray-600 text-left leading-relaxed">
+                                <p className="">
+                                    As the founder and CEO, I bring over 25 years of experience in International Trade, and I'm passionate
+                                    about helping businesses navigate the complexities of the global marketplace. Since launching my company
+                                    in 2018, we’ve focused on delivering innovative, reliable, and cost-effective logistics solutions that
+                                    empower our clients to grow and succeed.
+                                </p>
+                                <p className="">
+                                    We understand that every business is unique, which is why we offer personalized services designed to meet
+                                    your specific needs. Whether you're managing complex project cargo, expanding into new markets, or streamlining
+                                    your supply chain, we're here to support your success every step of the way.
+                                </p>
+                                <p className="">
+                                    Our team is committed to excellence, constantly investing in technology, processes, and training to ensure that
+                                    we deliver the best results. I look forward to working with you and helping your business achieve its goals.
+                                </p>
+                                <p className=''>
+                                    Thank you for choosing U.S. Handle Worldwide Trade.
+                                </p>
+                            </div>
                         </div>
                     </AnimatedSection>
                 </div>

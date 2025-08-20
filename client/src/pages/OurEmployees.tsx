@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import ceoImage from "@/pages/Images/ceoImage.jpg";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import kratikImage from "../assets/kratikImage.jpeg"
 
 type ProductCardProps = {
     name: string;
@@ -18,9 +18,7 @@ const EmployeeCard: React.FC<ProductCardProps> = ({
 }) => {
     return (
         <div className="relative w-80 p-1 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
-            {/* Inner Card */}
             <div className="bg-black rounded-lg p-6 text-white">
-                {/* Image */}
                 <img
                     src={image}
                     alt={name}
@@ -39,7 +37,7 @@ const EmployeeCard: React.FC<ProductCardProps> = ({
 
 const employees = [
     {
-        image: ceoImage,
+        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
         name: "Karla Regina Baeza",
         role: "Managing Director",
         email: "krbaeza@ushwt.com",
@@ -51,7 +49,7 @@ const employees = [
         email: "amunoz@ushwt.com",
     },
     {
-        image: "https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0",
+        image: kratikImage,
         name: "Kratik Singh",
         role: "IT Assistant, EX/IN Department",
         email: "ksingh@ushwt.com"
